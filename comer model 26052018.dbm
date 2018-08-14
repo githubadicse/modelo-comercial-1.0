@@ -1,0 +1,4394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.1" last-position="0,2910" last-zoom="0.8"
+	 default-owner="postgres">
+<database name="bdcomer" encoding="UTF8" is-template="false" allow-conns="true">
+	<role name="postgres"/>
+	<tablespace name="pg_default"/>
+</database>
+
+<schema name="public" protected="true" rect-visible="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<schema name="bdcomer" rect-visible="true" fill-color="#d66b29">
+	<role name="postgres"/>
+</schema>
+
+<table name="menu">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1440" y="220"/>
+	<column name="idmenu" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="label" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="routerlink" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="leaf" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="orden" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="icon">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="obs">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="idmenu" type="pk-constr" factor="100" table="bdcomer.menu">
+		<columns names="idmenu" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="perfil">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1800" y="200"/>
+	<column name="idperfil" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="dscperfil" not-null="true">
+		<type name="character varying" length="70"/>
+	</column>
+	<column name="idfilial" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<constraint name="keyperfiles" type="pk-constr" factor="100" table="bdcomer.perfil">
+		<columns names="idperfil" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="perfilesdetalle">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1740" y="380"/>
+	<column name="idsysperfilesdetalle" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idmenu" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idperfil" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<constraint name="keyperfilesdetalle" type="pk-constr" factor="100" table="bdcomer.perfilesdetalle">
+		<columns names="idsysperfilesdetalle" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="filial">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="3060" y="160"/>
+	<column name="idfilial" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="dscfilial" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="razonsocial" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="direccion" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="ruc">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="telefonos">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="representantelegal">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="dnirepresentantelegal" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="keyfilial" type="pk-constr" factor="100" table="bdcomer.filial">
+		<columns names="idfilial" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="usuario">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2720" y="420"/>
+	<column name="idusuario" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idperfil" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="clave" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="activo" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="login" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nomusuario" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idfilial" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="status" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="dni">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="keyusuario" type="pk-constr" factor="100" table="bdcomer.usuario">
+		<columns names="idusuario" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="rol">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="960" y="420"/>
+	<column name="idrol" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idusuario" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="rolename" not-null="true">
+		<type name="character varying" length="1"/>
+	</column>
+	<constraint name="rol_pk" type="pk-constr" factor="100" table="bdcomer.rol">
+		<columns names="idrol" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="com001">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="3420" y="960"/>
+	<column name="idcom001" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idproveedorcliente" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="fecha" not-null="true">
+		<type name="timestamp" length="1"/>
+	</column>
+	<column name="hora">
+		<type name="time" length="1"/>
+	</column>
+	<column name="idalmacen">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idusuario" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="fechasys">
+		<type name="timestamp" length="1"/>
+	</column>
+	<column name="idmoneda">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="igvporcentaje">
+		<type name="float" length="1"/>
+	</column>
+	<column name="igvimporte">
+		<type name="float" length="1"/>
+	</column>
+	<column name="tipocambio">
+		<type name="float" length="1"/>
+	</column>
+	<column name="importe">
+		<type name="float" length="1"/>
+	</column>
+	<column name="totpago">
+		<type name="float" length="1"/>
+	</column>
+	<column name="saldo">
+		<type name="float" length="1"/>
+	</column>
+	<column name="fechahorasys">
+		<type name="timestamp" length="1"/>
+	</column>
+	<constraint name="com001_pk" type="pk-constr" factor="100" table="bdcomer.com001">
+		<columns names="idcom001" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="laboratorio">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1600" y="620"/>
+	<column name="idlaboratorio" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="dsclaboratorio" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="laboratorio_pk" type="pk-constr" factor="100" table="bdcomer.laboratorio">
+		<columns names="idlaboratorio" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="modelo">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2380" y="700"/>
+	<column name="idmodelo" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="dscmodelo" not-null="true">
+		<type name="character varying" length="1"/>
+	</column>
+	<constraint name="modelo_pk" type="pk-constr" factor="100" table="bdcomer.modelo">
+		<columns names="idmodelo" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="marca">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2460" y="920"/>
+	<column name="idmarca" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="dscmarca" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="marca_pk" type="pk-constr" factor="100" table="bdcomer.marca">
+		<columns names="idmarca" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="unidadmedida">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2260" y="2140"/>
+	<column name="idunidadmedida" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="dscunidadmedida" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="abrunidadmedida">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="factor">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="unidadmedida_pk" type="pk-constr" factor="100" table="bdcomer.unidadmedida">
+		<columns names="idunidadmedida" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="producto">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2380" y="1220"/>
+	<column name="idproducto" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="dscproducto" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="dscproductocorto">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idunidadmedida" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idmarca">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idmodelo">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idlaboratorio">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idcategoria">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="peso" default-value="0">
+		<type name="decimal" length="10" precision="3"/>
+	</column>
+	<column name="estado" default-value="0">
+		<type name="smallint" length="1"/>
+	</column>
+	<column name="idmoneda">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="stockminimo">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="activo">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="exigevencimiento">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="exigelote">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="numeropiezas" default-value="1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_catalogo_producto_qaliwarma">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="porcentaje_igv">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="porcentaje_isc">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="precio1_valor_venta">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="precio2_valor_venta">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="precio3_valor_venta">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="valor_igv_precio1">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="valor_igv_precio2">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="valor_igv_precio3">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="valor_isc_precio1">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="valor_isc_precio2">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="valor_isc_precio3">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="precio1" default-value="0">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="precio2" default-value="0">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="precio3" default-value="0">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<constraint name="producto_pk" type="pk-constr" factor="100" table="bdcomer.producto">
+		<columns names="idproducto" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="proveedorcliente">
+	<schema name="bdcomer"/>
+	<position x="2040" y="1840"/>
+	<column name="idproveedorcliente" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="razonsocial">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="representante">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nrodocumento">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="iddocumentoidentificacion">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="telefono">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="email">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="contacto1">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="contacto2">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_idproveedorcliente" type="pk-constr" factor="10" table="bdcomer.proveedorcliente">
+		<columns names="idproveedorcliente" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="com002">
+	<schema name="bdcomer"/>
+	<position x="3540" y="1360"/>
+	<column name="idcom002" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idcom001" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idproducto" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="cantidad" not-null="true">
+		<type name="float" length="1"/>
+	</column>
+	<column name="preciounitario" not-null="true">
+		<type name="float" length="1"/>
+	</column>
+	<column name="total" not-null="true">
+		<type name="float" length="1"/>
+	</column>
+	<constraint name="pk_com002" type="pk-constr" factor="10" table="bdcomer.com002">
+		<columns names="idcom002" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="gasto001">
+	<schema name="bdcomer"/>
+	<position x="960" y="900"/>
+	<column name="idgasto001" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="fecha">
+		<type name="timestamp" length="1"/>
+	</column>
+	<column name="idtipodocumento" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="serie">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="nrodoc">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="idproveedorcliente" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="observacion">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="importe">
+		<type name="float" length="1"/>
+	</column>
+	<column name="idmoneda" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="igvporcentaje">
+		<type name="float" length="1"/>
+	</column>
+	<column name="igvimporte">
+		<type name="float" length="1"/>
+	</column>
+	<column name="impuestocuartaporcentaje">
+		<type name="float" length="1"/>
+	</column>
+	<column name="impuestocuartaimporte">
+		<type name="float" length="1"/>
+	</column>
+	<column name="glosa" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="fechahorasys">
+		<type name="timestamp" length="1"/>
+	</column>
+	<constraint name="pk_idgasto001" type="pk-constr" factor="10" table="bdcomer.gasto001">
+		<columns names="idgasto001" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="moneda">
+	<schema name="bdcomer"/>
+	<position x="1940" y="1340"/>
+	<column name="id_moneda" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="dsc_moneda">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_idmoneda" type="pk-constr" factor="10" table="bdcomer.moneda">
+		<columns names="id_moneda" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="categoria">
+	<schema name="bdcomer"/>
+	<position x="2080" y="700"/>
+	<column name="idcategoria" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="dsccategoria">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_idcategoria" type="pk-constr" factor="10" table="bdcomer.categoria">
+		<columns names="idcategoria" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipodocumento">
+	<schema name="bdcomer"/>
+	<position x="1580" y="1260"/>
+	<column name="id_tipo_documento" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="dsc_tipo_documento">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="codigo_sunat">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_idtipodocumento" type="pk-constr" table="bdcomer.tipodocumento">
+		<columns names="id_tipo_documento" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="proveedordocumento" table="bdcomer.gasto001"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="idproveedorcliente"/>
+		</idxelement>
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="idtipodocumento"/>
+		</idxelement>
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="serie"/>
+		</idxelement>
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="nrodoc"/>
+		</idxelement>
+</index>
+
+<table name="ing001">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="3280" y="1640"/>
+	<column name="iding001" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="fecha" not-null="true">
+		<type name="date" length="1"/>
+	</column>
+	<column name="hora" not-null="true">
+		<type name="time" length="1"/>
+	</column>
+	<column name="idalmacen" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="nrodoc" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idcom001">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idempleado" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="fechahorasys" not-null="true">
+		<type name="timestamp" length="1"/>
+	</column>
+	<column name="condicionrelacioncompra">
+		<type name="smallint" length="1"/>
+		<comment><![CDATA[0: sin relacion  1:relacion parcial 2: relacion completa con la factura]]></comment>
+	</column>
+	<column name="glosa">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idperiodoalmacen" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idmotivoingreso">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idtraslado">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="id_tipo_documento">
+		<type name="integer" length="0"/>
+		<comment><![CDATA[tipo documento del proveedor]]></comment>
+	</column>
+	<column name="idproveedorcliente" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="seriedocproveedor">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nrodocproveedor">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_iding001" type="pk-constr" table="bdcomer.ing001">
+		<columns names="iding001" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="empleado">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="3020" y="1200"/>
+	<column name="idempleado" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="nomempleado" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="fechaingreso" not-null="true">
+		<type name="timestamp" length="1"/>
+	</column>
+	<column name="fechanacimiento" not-null="true">
+		<type name="timestamp" length="1"/>
+	</column>
+	<column name="direccion" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="telefono" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="email">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="dni">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_idempleado" type="pk-constr" table="bdcomer.empleado">
+		<columns names="idempleado" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="almacen">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2400" y="1060"/>
+	<column name="idalmacen" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="dscalmacen" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="direccion" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_idalmacen" type="pk-constr" table="bdcomer.almacen">
+		<columns names="idalmacen" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="ing002">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="3280" y="2180"/>
+	<column name="iding002" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="iding001" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idproducto" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="cantidad" not-null="true" default-value="0">
+		<type name="decimal" length="15" precision="3"/>
+	</column>
+	<column name="item">
+		<type name="smallint" length="1"/>
+	</column>
+	<column name="nrolote">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="peso">
+		<type name="decimal" length="15" precision="3"/>
+	</column>
+	<column name="pesototal">
+		<type name="decimal" length="15" precision="3"/>
+	</column>
+	<column name="fechavencimiento">
+		<type name="timestamp" length="1"/>
+	</column>
+	<constraint name="pk_iding002" type="pk-constr" table="bdcomer.ing002">
+		<columns names="iding002" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="kardex">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1540" y="2080"/>
+	<column name="idkardex" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idproducto" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="cantidad" not-null="true" default-value="0">
+		<type name="decimal" length="15" precision="3"/>
+	</column>
+	<column name="fechahora" not-null="true">
+		<type name="timestamp" length="1"/>
+	</column>
+	<column name="tipomovimiento" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nromov" not-null="true">
+		<type name="integer" length="1"/>
+		<comment><![CDATA[0  es para el movimiento del saldo anterior]]></comment>
+	</column>
+	<column name="preciounitario" not-null="true">
+		<type name="float" length="1"/>
+	</column>
+	<column name="total" not-null="true">
+		<type name="float" length="1"/>
+	</column>
+	<column name="obs">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idperiodoalmacen">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="nrodoc">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nrolote">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_idkardex" type="pk-constr" table="bdcomer.kardex">
+		<columns names="idkardex" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="cierremensual">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2640" y="1880"/>
+	<column name="idcierremensual" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idproducto" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="stockinicial" default-value="0">
+		<type name="numeric" length="15" precision="3"/>
+	</column>
+	<column name="ingresos" default-value="0">
+		<type name="decimal" length="15" precision="3"/>
+	</column>
+	<column name="salidas" default-value="0">
+		<type name="decimal" length="10" precision="3"/>
+	</column>
+	<column name="stockfinal" default-value="0">
+		<type name="decimal" length="15" precision="3"/>
+	</column>
+	<column name="preciounitario">
+		<type name="float" length="1"/>
+	</column>
+	<column name="total">
+		<type name="float" length="1"/>
+	</column>
+	<column name="idalmacen" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idperiodoalmacen" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<constraint name="pk_idcierremensual" type="pk-constr" table="bdcomer.cierremensual">
+		<columns names="idcierremensual" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="salida001">
+	<schema name="bdcomer"/>
+	<position x="220" y="1460"/>
+	<column name="idsalida001" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="fecha" not-null="true">
+		<type name="date" length="1"/>
+	</column>
+	<column name="hora" not-null="true">
+		<type name="time" length="1"/>
+	</column>
+	<column name="idproveedorcliente" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idalmacen" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="nrodoc" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="idven001">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idempleado" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="fechahorasys" not-null="true">
+		<type name="timestamp" length="1"/>
+	</column>
+	<column name="glosa">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idperiodoalmacen" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idmotivosalida">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="condicionrelacionventa">
+		<type name="smallint" length="1"/>
+	</column>
+	<column name="idtraslado">
+		<type name="integer" length="1"/>
+	</column>
+	<constraint name="pk_salida001" type="pk-constr" table="bdcomer.salida001">
+		<columns names="idsalida001" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="perfilesdetallemantenimiento">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2260" y="400"/>
+	<column name="perfilesdetallemantenimiento" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idsysperfilesdetalle" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nuevo" not-null="true">
+		<type name="smallint" length="1"/>
+	</column>
+	<column name="editar" not-null="true">
+		<type name="smallint" length="1"/>
+	</column>
+	<column name="eliminar" not-null="true">
+		<type name="smallint" length="1"/>
+	</column>
+	<column name="imprimir" not-null="true">
+		<type name="smallint" length="1"/>
+	</column>
+	<constraint name="pk_perfilesdetallemantenimiento" type="pk-constr" table="bdcomer.perfilesdetallemantenimiento">
+		<columns names="perfilesdetallemantenimiento" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="ing002kardex">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2760" y="2400"/>
+	<column name="iding002kardex" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="iding002" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idkardex" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_ing002kardex" type="pk-constr" table="bdcomer.ing002kardex">
+		<columns names="iding002kardex" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="periodoalmacen">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<comment><![CDATA[A activo C cerrado]]></comment>
+	<position x="2800" y="1580"/>
+	<column name="idperiodoalmacen" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="mes" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="anno" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="estado">
+		<type name="char" length="1"/>
+		<comment><![CDATA[A aperturado C cerrado]]></comment>
+	</column>
+	<column name="iniciooperaciones" not-null="true" default-value="0">
+		<type name="smallint" length="1"/>
+	</column>
+	<column name="idalmacen" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<constraint name="pk_idperiodoalmacen" type="pk-constr" table="bdcomer.periodoalmacen">
+		<columns names="idperiodoalmacen" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="periodo" table="bdcomer.periodoalmacen"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="mes"/>
+		</idxelement>
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="anno"/>
+		</idxelement>
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="idalmacen"/>
+		</idxelement>
+</index>
+
+<table name="motivoingreso">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="3760" y="1660"/>
+	<column name="idmotivoingreso" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="dscmotivoingreso" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="flagtraslado" default-value="0">
+		<type name="smallint" length="1"/>
+	</column>
+	<constraint name="pk_motivoingreso" type="pk-constr" table="bdcomer.motivoingreso">
+		<columns names="idmotivoingreso" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="salida002">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="380" y="1180"/>
+	<column name="idsalida002" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idsalida001">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idproducto" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="cantidad" not-null="true" default-value="0">
+		<type name="decimal" length="15" precision="3"/>
+	</column>
+	<column name="item">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="nrolote">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="peso">
+		<type name="decimal" length="15" precision="3"/>
+	</column>
+	<column name="pesototal">
+		<type name="decimal" length="15" precision="3"/>
+	</column>
+	<column name="fechavencimiento">
+		<type name="timestamp" length="1"/>
+	</column>
+	<constraint name="pk_salida002" type="pk-constr" table="bdcomer.salida002">
+		<columns names="idsalida002" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="usuarioalmacen">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2740" y="700"/>
+	<column name="idusuarioalmacen" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idusuario">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idalmacen">
+		<type name="integer" length="1"/>
+	</column>
+	<constraint name="pk_idusuarioalmacen" type="pk-constr" table="bdcomer.usuarioalmacen">
+		<columns names="idusuarioalmacen" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="salida002kardex">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="700" y="1320"/>
+	<column name="idsalida002kardex" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idsalida002">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idkardex">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_idsalida002kardex" type="pk-constr" table="bdcomer.salida002kardex">
+		<columns names="idsalida002kardex" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="motivosalida">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="640" y="1800"/>
+	<column name="idmotivosalida" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="dscmotivosalida">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="flagtraslado" default-value="0">
+		<type name="integer" length="1"/>
+	</column>
+	<constraint name="idmotivodalida" type="pk-constr" table="bdcomer.motivosalida">
+		<columns names="idmotivosalida" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="ven001">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="260" y="2060"/>
+	<column name="idven001" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="fecha_emision" not-null="true">
+		<type name="timestamp" length="1"/>
+	</column>
+	<column name="idproveedorcliente" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="id_tipo_documento" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_modalidad_venta" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idaperturapuntoventa">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="serieDocumento">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="numeroDocumento">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_moneda">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="descuentos_globales">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="sumatoria_otros_cargos">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="total_descuentos">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="total_valor_venta_grabadas">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="total_valor_venta_inafectas">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="total_valor_venta_exoneradas">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="sumatoria_igv">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="sumatoria_isc">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="sumatoria_otros_tributos">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="importe_total_venta">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="idproveedorclientedireccion">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_idven001" type="pk-constr" table="bdcomer.ven001">
+		<columns names="idven001" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="ven002">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<comment><![CDATA[valor_venta_unitario + igv_valor_unitario + isc_valor_unitario]]></comment>
+	<position x="780" y="2280"/>
+	<column name="idven002" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idven001">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idproducto">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="cantidad">
+		<type name="decimal" length="10" precision="3"/>
+	</column>
+	<column name="valor_bruto_unitario">
+		<type name="numeric" length="16" precision="6"/>
+	</column>
+	<column name="descuento_unitario">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="valor_venta_unitario">
+		<type name="numeric" length="16" precision="6"/>
+	</column>
+	<column name="igv_porcentaje">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="igv_valor_unitario">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="isc_porcentaje">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="isc_valor_unitario">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="precio_unitario_venta">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="item_sub_total_valor_venta">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="item_sub_total_igv">
+		<type name="numeric" length="16" precision="3"/>
+	</column>
+	<column name="item_sub_total_isc">
+		<type name="numeric" length="16" precision="3"/>
+	</column>
+	<column name="item_total_venta">
+		<type name="numeric" length="16" precision="3"/>
+	</column>
+	<constraint name="pk_idven002" type="pk-constr" table="bdcomer.ven002">
+		<columns names="idven002" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="stockactual">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2980" y="860"/>
+	<column name="idstockactual" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idproducto">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idalmacen">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="stockactual" default-value="0">
+		<type name="numeric" length="15" precision="3"/>
+	</column>
+	<constraint name="idstockactual" type="pk-constr" table="bdcomer.stockactual">
+		<columns names="idstockactual" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="traslado">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1640" y="1820"/>
+	<column name="idtraslado" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idalmacen">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="estado">
+		<type name="integer" length="1"/>
+	</column>
+	<constraint name="pk_idsalidadestiono" type="pk-constr" table="bdcomer.traslado">
+		<columns names="idtraslado" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="sec_idcodigobarra"
+	 start="1" increment="1"
+	 min-value="0" max-value="2147483647"
+	 cache="1" cycle="false">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="codigobarra">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1620" y="1040"/>
+	<column name="idcodigobarra" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="codigo" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idproducto">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="codigobarra_pk" type="pk-constr" table="bdcomer.codigobarra">
+		<columns names="idcodigobarra" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="idxcodigobarra" table="bdcomer.codigobarra"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="codigo"/>
+		</idxelement>
+</index>
+
+<table name="filepath">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2520" y="140"/>
+	<column name="idruta" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="rutaimages">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="rutapdf">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="rutaxls">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="rutadoc">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="ruta_pk" type="pk-constr" table="bdcomer.filepath">
+		<columns names="idruta" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="proveedorclientedireccion">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="80" y="820"/>
+	<column name="idproveedorclientedireccion" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="direccion">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idproveedorcliente">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="proveedorclientedireccion_pk" type="pk-constr" table="bdcomer.proveedorclientedireccion">
+		<columns names="idproveedorclientedireccion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="documentoidentificacion">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1800" y="880"/>
+	<column name="iddocumentoidentificacion" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="dscdocumentoidentificacion">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="longitud">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="documentoidentificacion_pk" type="pk-constr" table="bdcomer.documentoidentificacion">
+		<columns names="iddocumentoidentificacion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="lineacredito">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="700" y="640"/>
+	<column name="idlineacredito" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="totallinea">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="totalconsumo">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="totalsaldo">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="idproveedorcliente">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="idmoneda">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="lineacredito_pk" type="pk-constr" table="bdcomer.lineacredito">
+		<columns names="idlineacredito" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="puntoventa">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1860" y="2300"/>
+	<column name="idpuntoventa" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="dscpuntoventa">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="mac">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pos_pk" type="pk-constr" table="bdcomer.puntoventa">
+		<columns names="idpuntoventa" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="aperturapuntoventa">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2220" y="2500"/>
+	<column name="idaperturapuntoventa" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fechahora">
+		<type name="timestamp" length="0"/>
+	</column>
+	<column name="saldoinicial">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="idpos">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="idusuario">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="idempleado">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="estado">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="aperturapos_pk" type="pk-constr" table="bdcomer.aperturapuntoventa">
+		<columns names="idaperturapuntoventa" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="usuarioempleado">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="3320" y="680"/>
+	<column name="idusuarioempleado" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idusuario">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="idempleado">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="usuarioempleado_pk" type="pk-constr" table="bdcomer.usuarioempleado">
+		<columns names="idusuarioempleado" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="ubigeo">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="580" y="2800"/>
+	<column name="idubigeo" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nombre_departamento">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nombre_provincia">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nombre_distrito">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_idubigeo" type="pk-constr" table="bdcomer.ubigeo">
+		<columns names="idubigeo" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="codigomodular_iinstitucion_educativa">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="540" y="3180"/>
+	<column name="codigo_modular" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nombre_institucion_educativa">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="direccion_institucion_educativa">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="latitud">
+		<type name="float" length="0"/>
+	</column>
+	<column name="longitud">
+		<type name="float" length="0"/>
+	</column>
+	<constraint name="pk_codigo_modular" type="pk-constr" table="bdcomer.codigomodular_iinstitucion_educativa">
+		<columns names="codigo_modular" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="nivel_educacion">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1140" y="2620"/>
+	<column name="id_nivel_educacion" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="dsc_nivel_educacion">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_id_nivel_educacion" type="pk-constr" table="bdcomer.nivel_educacion">
+		<columns names="id_nivel_educacion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="modalidad_entrega_alimentos">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1840" y="2920"/>
+	<column name="id_modalidad_entrega_alimentos" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="dsc_modalidad_entrega_alimentos">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_id_modalidad_entrega_alimentos" type="pk-constr" table="bdcomer.modalidad_entrega_alimentos">
+		<columns names="id_modalidad_entrega_alimentos" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="horario_alimentacion">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1760" y="3640"/>
+	<column name="id_horario_alimentacion" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="dsc_horario_alimentacion">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_id_horario_alimentacion" type="pk-constr" table="bdcomer.horario_alimentacion">
+		<columns names="id_horario_alimentacion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="requerimiento_volumen_001">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1180" y="2840"/>
+	<column name="id_requerimiento_volumen_001" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idubigeo">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="codigo_modular">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_nivel_educacion">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="numero_usuarios">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_modalidad_entrega_alimentos">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_horario_alimentacion">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="anno">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_region_alimentaria">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="centro_poblado">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_entrega_por_item">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="peso_total">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="flag_estado" default-value="1">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="pk_id_requerimiento_volumen_001" type="pk-constr" table="bdcomer.requerimiento_volumen_001">
+		<columns names="id_requerimiento_volumen_001" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="requerimiento_volumen_002">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="440" y="3380"/>
+	<column name="id_requerimiento_volumen_002" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_requerimiento_volumen_001">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="numero_usuarios">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_numero_entrega">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="pk_id_requerimiento_volumen_002" type="pk-constr" table="bdcomer.requerimiento_volumen_002">
+		<columns names="id_requerimiento_volumen_002" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="producto_presentacion">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2720" y="3760"/>
+	<column name="id_producto_presentacion" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="cantidad_presentacion">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="dsc_presentacion">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_catalogo_producto_qaliwarma">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="factor_volumen_presentacion">
+		<type name="numeric" length="10" precision="3"/>
+		<comment><![CDATA[Significa el peso en gramos, volumen de litros en ml en formato 000.000, despues del punto gr o ml]]></comment>
+	</column>
+	<column name="anno">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="numero_entrega">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="pk_id_producto_presentacion" type="pk-constr" table="bdcomer.producto_presentacion">
+		<columns names="id_producto_presentacion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="volumen_convertido_envace">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2700" y="4180"/>
+	<column name="id_volumen_convertido_envace" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="cantidad">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="bonificacion">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_requerimiento_volumen_002_producto">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_producto_presentacion">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="obs">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_catalogo_marca">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="volumen">
+		<type name="decimal" length="10" precision="3"/>
+	</column>
+	<column name="descripcion_final_producto">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_entrega_por_item">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="fecha_calculo_sys">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="pk_id_volumen_convertido_envace" type="pk-constr" table="bdcomer.volumen_convertido_envace">
+		<columns names="id_volumen_convertido_envace" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="producto_por_numero_entrega">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Maestro de productos para qaliwarma]]></comment>
+	<position x="1300" y="3300"/>
+	<column name="id_producto_por_numero_entrega" not-null="true">
+		<type name="varchar" length="0"/>
+		<comment><![CDATA[ubigeo+codigomodular+entrega (Entrega covertido a c2)]]></comment>
+	</column>
+	<column name="id_catalogo_producto_qaliwarma">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="dsc_complemento_producto">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_entregas_por_item">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="numero_lote">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="fecha_vencimiento">
+		<type name="date" length="0"/>
+	</column>
+	<column name="fecha_elavoracion">
+		<type name="date" length="0"/>
+	</column>
+	<column name="peso_total">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="lote1">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="lote2">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="lote3">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="lote4">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="lote5">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="fecha_vencimiento1">
+		<type name="date" length="0"/>
+	</column>
+	<column name="fecha_vencimiento2">
+		<type name="date" length="0"/>
+	</column>
+	<column name="fecha_vencimiento3">
+		<type name="date" length="0"/>
+	</column>
+	<column name="fecha_vencimiento4">
+		<type name="date" length="0"/>
+	</column>
+	<column name="fecha_vencimiento5">
+		<type name="date" length="0"/>
+	</column>
+	<column name="cantidad_lote1">
+		<type name="integer" length="10" precision="3"/>
+	</column>
+	<column name="cantidad_lote2">
+		<type name="integer" length="10" precision="3"/>
+	</column>
+	<column name="cantidad_lote3">
+		<type name="integer" length="10" precision="3"/>
+	</column>
+	<column name="cantidad_lote4">
+		<type name="integer" length="10" precision="3"/>
+	</column>
+	<column name="cantidad_lote5">
+		<type name="integer" length="10" precision="3"/>
+	</column>
+	<column name="registro_sanitario1">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="registro_sanitario2">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="registro_sanitario3">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="registro_sanitario4">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="registro_sanitario5">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="marca1">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="marca2">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="marca3">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="marca4">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="marca5">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="presentacion_minima">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<constraint name="pk_id_producto_por_numero_entrega" type="pk-constr" table="bdcomer.producto_por_numero_entrega">
+		<columns names="id_producto_por_numero_entrega" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="requerimiento_volumen_002_producto">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="540" y="3780"/>
+	<column name="id_requerimiento_volumen_002_producto" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_requerimiento_volumen_002">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_producto_por_numero_entrega">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="volumen">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="id_producto_por_numero_entrega_aux">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_region_alimentaria_aux">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_horario_alimentacion_aux">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="volumen_por_usuario">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<constraint name="pk_requerimiento_volumen_002_producto" type="pk-constr" table="bdcomer.requerimiento_volumen_002_producto">
+		<columns names="id_requerimiento_volumen_002_producto" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="catalogo_producto_qaliwarma">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2380" y="3240"/>
+	<column name="id_catalogo_producto_qaliwarma" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="dsc_catalogo_producto_qaliwarma">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="anno">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="idunidadmedida">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_envase">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_unidad_medida_trabajo">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="print_lote" default-value="0">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="pk_id_catalogo_producto_qaliwarma" type="pk-constr" table="bdcomer.catalogo_producto_qaliwarma">
+		<columns names="id_catalogo_producto_qaliwarma" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="item_entrega">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2120" y="3700"/>
+	<column name="item" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="dscitem">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="anno">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="pk_item" type="pk-constr" table="bdcomer.item_entrega">
+		<columns names="item" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="numero_entrega">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2500" y="3620"/>
+	<column name="id_numero_entrega" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="dsc_numero_entrega">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="numero_entrega_valor">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="pk_id_numero_entrega" type="pk-constr" table="bdcomer.numero_entrega">
+		<columns names="id_numero_entrega" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="entrega_por_item">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1900" y="3300"/>
+	<column name="id_entrega_por_item" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="item">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_numero_entrega">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="cerrado" default-value="false">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="inicio_atencion">
+		<type name="date" length="0"/>
+	</column>
+	<column name="fin_atencion">
+		<type name="date" length="0"/>
+	</column>
+	<column name="idproveedorcliente">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_punto_partida">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_vehiculo">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_chofer">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_transportista">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="pk_id_entregas_por_item" type="pk-constr" table="bdcomer.entrega_por_item">
+		<columns names="id_entrega_por_item" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="idx_id_volumen_convertido_envace" table="bdcomer.volumen_convertido_envace"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="id_volumen_convertido_envace"/>
+		</idxelement>
+</index>
+
+<table name="region_alimentaria">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="540" y="2980"/>
+	<column name="id_region_alimentaria" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="dsc_region_alimentaria">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_id_region_alimentaria" type="pk-constr" table="bdcomer.region_alimentaria">
+		<columns names="id_region_alimentaria" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="catalogo_bonificacion">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1180" y="3940"/>
+	<column name="id_catalogo_bonificacion" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_region_alimentaria">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_producto_por_numero_entrega">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="numero_de_preparacion_por_entrega">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_horario_alimentacion">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_producto_presentacion">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_id_catalogo_bonificacion" type="pk-constr" table="bdcomer.catalogo_bonificacion">
+		<columns names="id_catalogo_bonificacion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="idx_id" table="bdcomer.requerimiento_volumen_001"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="id_requerimiento_volumen_001"/>
+		</idxelement>
+</index>
+
+<index name="idx_anno" table="bdcomer.item_entrega"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="anno"/>
+		</idxelement>
+</index>
+
+<index name="idx_idcatalogo_producto_qaliwarma" table="bdcomer.catalogo_producto_qaliwarma"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="id_catalogo_producto_qaliwarma"/>
+		</idxelement>
+</index>
+
+<table name="catalogo_marca">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="3520" y="3640"/>
+	<column name="id_catalogo_marca" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="dsc_catalogo_marca">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_producto_por_numero_entrega">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_producto_presentacion">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idmarca">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="pk_id_catalogo_marca" type="pk-constr" table="bdcomer.catalogo_marca">
+		<columns names="id_catalogo_marca" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="guia_remision_001">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2780" y="2640"/>
+	<column name="id_guia_remision_001" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="serie">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="numero">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fecha_emision">
+		<type name="date" length="0"/>
+	</column>
+	<column name="idproveedorcliente">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_punto_partida">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_punto_llegada">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_requerimiento_volumen_001">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_vehiculo">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_chofer">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_transportista">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="estado">
+		<type name="varchar" length="0"/>
+		<comment><![CDATA[E emitido A anulado]]></comment>
+	</column>
+	<column name="suma_peso_toal">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="orden_por_item">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="pk_id_guia_remision_001" type="pk-constr" table="bdcomer.guia_remision_001">
+		<columns names="id_guia_remision_001" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="guia_remision_002">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="3420" y="3360"/>
+	<column name="id_guia_remision_002" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_guia_remision_001">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="peso_total">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="id_volumen_convertido_envace">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="cantidad">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="factor">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="numero_lote">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="producto_grupo">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="producto_seleccionado">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="unidad_medida_trabajo">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="envase">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="marca">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="flag_over_lote">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="pk_id_guia_remision_002" type="pk-constr" table="bdcomer.guia_remision_002">
+		<columns names="id_guia_remision_002" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="transportista">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="3640" y="3180"/>
+	<column name="id_transportista" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="idproveedorcliente">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="pk_id_transportista" type="pk-constr" table="bdcomer.transportista">
+		<columns names="id_transportista" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="vehiculo">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="3680" y="2780"/>
+	<column name="id_vehiculo" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="numero_placa">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="marca_vehiculo">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_id_vehiculo" type="pk-constr" table="bdcomer.vehiculo">
+		<columns names="id_vehiculo" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="chofer">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="3660" y="2960"/>
+	<column name="id_chofer" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="dni">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="numero_brevete">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nombres">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_id_chofer" type="pk-constr" table="bdcomer.chofer">
+		<columns names="id_chofer" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="idx_guia_remision_001_serie_numero" table="bdcomer.guia_remision_001"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="serie"/>
+		</idxelement>
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="numero"/>
+		</idxelement>
+</index>
+
+<table name="envase">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2060" y="3080"/>
+	<column name="id_envase" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="dsc_envase">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_id_envase" type="pk-constr" table="bdcomer.envase">
+		<columns names="id_envase" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="punto_partida">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="3600" y="2400"/>
+	<column name="id_punto_partida" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="direccion">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_id_punto_partida" type="pk-constr" table="bdcomer.punto_partida">
+		<columns names="id_punto_partida" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="punto_llegada">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="3620" y="2560"/>
+	<column name="id_punto_llegada" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="direccion">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="pk_punto_llegada" type="pk-constr" table="bdcomer.punto_llegada">
+		<columns names="id_punto_llegada" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="idx_chofer_dni" table="bdcomer.chofer"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="dni"/>
+		</idxelement>
+</index>
+
+<index name="idx_chofer_numero_brevete" table="bdcomer.chofer"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="numero_brevete"/>
+		</idxelement>
+</index>
+
+<index name="idx_vehiculo" table="bdcomer.vehiculo"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="numero_placa"/>
+		</idxelement>
+</index>
+
+<table name="numerador">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2920" y="3100"/>
+	<column name="id_numerador" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="idtipodocumento">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="serie">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="ultimo_emitido">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="numerador_pk" type="pk-constr" table="bdcomer.numerador">
+		<columns names="id_numerador" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="matriz">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2120" y="4040"/>
+	<column name="id_matriz" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="dsc_grupo_alimento">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="alimento_seleccionado">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="abr_unidad_medida">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_requerimiento_volumen_001">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="volumen">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="usuarios">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="presentacion1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="presentacion2">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="presentacion3">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="unds1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="unds2">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="unds3">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="factor1">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="factor2">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="factor3">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="peso">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="id_producto_por_numero_entrega">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="lote1">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="lote2">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="lote3">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="lote4">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="lote5">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="fecha_vencimiento1">
+		<type name="date" length="0"/>
+	</column>
+	<column name="fecha_vencimiento2">
+		<type name="date" length="0"/>
+	</column>
+	<column name="fecha_vencimiento3">
+		<type name="date" length="0"/>
+	</column>
+	<column name="fecha_vencimiento4">
+		<type name="date" length="0"/>
+	</column>
+	<column name="fecha_vencimiento5">
+		<type name="date" length="0"/>
+	</column>
+	<column name="cantidad_lote1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="cantidad_lote2">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="cantidad_lote3">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="cantidad_lote4">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="cantidad_lote5">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="registro_sanitario1">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="registro_sanitario2">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="registro_sanitario3">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="registro_sanitario4">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="registro_sanitario5">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="marca1">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="marca2">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="marca3">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="marca4">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="marca5">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="matriz_pk" type="pk-constr" table="bdcomer.matriz">
+		<columns names="id_matriz" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="ruta_distribucion">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1640" y="4240"/>
+	<column name="id_ruta_distribucion" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="dsc_ruta_distribucion">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_empleado_distribuidor">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="anno">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="numero_entrega">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_chofer">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_vehiculo">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="ruta_distribucion_pk" type="pk-constr" table="bdcomer.ruta_distribucion">
+		<columns names="id_ruta_distribucion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="ruta_distribucion_detalle">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="500" y="4080"/>
+	<column name="id_ruta_distribucion_detalle" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_ruta_distribucion">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_requerimiento_volumen_001">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="orden">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="ruta_distribucion_detalle_pk" type="pk-constr" table="bdcomer.ruta_distribucion_detalle">
+		<columns names="id_ruta_distribucion_detalle" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="catalogo_lote">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="4000" y="3880"/>
+	<column name="id_catalogo_lote" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="numero_lote">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="fecha_vencimiento">
+		<type name="date" length="0"/>
+	</column>
+	<column name="numero_registro">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_catalogo_marca">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="cantidad">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="catalogo_lote_pk" type="pk-constr" table="bdcomer.catalogo_lote">
+		<columns names="id_catalogo_lote" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="empleado_distribuidor">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1680" y="4600"/>
+	<column name="id_empleado_distribuidor" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="dni">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nombres">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="email">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="telefonos">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="celular_asignado">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="imei">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="empleado_distribuidor_pk" type="pk-constr" table="bdcomer.empleado_distribuidor">
+		<columns names="id_empleado_distribuidor" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="idx_empleado_distribuidor_dni" table="bdcomer.empleado_distribuidor"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="dni"/>
+		</idxelement>
+</index>
+
+<index name="idx_id_requerimiento_volumen_001" table="bdcomer.matriz"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="id_requerimiento_volumen_001"/>
+		</idxelement>
+</index>
+
+<table name="control_procesos">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="720" y="4460"/>
+	<column name="id_control_procesos" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="dsc_proceso">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="estado">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="control_procesos_pk" type="pk-constr" table="bdcomer.control_procesos">
+		<columns names="id_control_procesos" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="unidad_medida_trabajo">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2580" y="3060"/>
+	<column name="id_unidad_medida_trabajo" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="dsc_unidad_medida_trabajo">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="unidad_medida_trabajo_pk" type="pk-constr" table="bdcomer.unidad_medida_trabajo">
+		<columns names="id_unidad_medida_trabajo" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="matriz_presentacion">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="2600" y="4500"/>
+	<column name="id_matriz_presentacion" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_matriz">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="id_producto_presentacion">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="matriz_presentacion_pk" type="pk-constr" table="bdcomer.matriz_presentacion">
+		<columns names="id_matriz_presentacion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="presentacion_marca">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="3040" y="4620"/>
+	<column name="id_presentacion_marca" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_matriz_presentacion">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_catalogo_marca">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="presentacion_marca_pk" type="pk-constr" table="bdcomer.presentacion_marca">
+		<columns names="id_presentacion_marca" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="marca_lote">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="3660" y="4580"/>
+	<column name="id_marca_lote" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_catalogo_lote">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="cantidad">
+		<type name="integer" length="10" precision="3"/>
+	</column>
+	<column name="peso">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="id_presentacion_marca">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="marca_lote_pk" type="pk-constr" table="bdcomer.marca_lote">
+		<columns names="id_marca_lote" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="periodo_lectivo">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1060" y="4600"/>
+	<column name="id_periodo_lectivo" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="anno">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="numero_entrega">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="periodo_lectivo_pk" type="pk-constr" table="bdcomer.periodo_lectivo">
+		<columns names="id_periodo_lectivo" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="monto_contratado">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1760" y="2660"/>
+	<column name="id_monto_contratado" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_entrega_por_item">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_nivel_educacion">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_horario_alimentacion">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="precio_unitario_valor">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="precio_unitario_igv">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="precio_unitario_venta">
+		<type name="numeric" length="10" precision="3"/>
+	</column>
+	<column name="numero_dias">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="inicio_atencion">
+		<type name="date" length="0"/>
+	</column>
+	<column name="fin_atencion">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="monto_contratado_pk" type="pk-constr" table="bdcomer.monto_contratado">
+		<columns names="id_monto_contratado" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="cierre_institucion">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="180" y="3140"/>
+	<column name="codigo_modular" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="inicio_entrega">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fin_entrega">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="anno">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="insituciones_cierre_pk" type="pk-constr" table="bdcomer.cierre_institucion">
+		<columns names="codigo_modular" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="piking">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="4420" y="4140"/>
+	<column name="id_piking" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_requerimiento_volumen_001">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="cantidad">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_catalogo_lote">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_volumen_convertido_envace">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="piking_pk" type="pk-constr" table="bdcomer.piking">
+		<columns names="id_piking" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="modalidad_venta">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="140" y="1960"/>
+	<column name="id_modalidad_venta" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="dsc_modalidad_venta">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="modalidad_venta_pk" type="pk-constr" table="bdcomer.modalidad_venta">
+		<columns names="id_modalidad_venta" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="catalogo_multiplicar_nivel_educacion">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="1060" y="4220"/>
+	<column name="id_catalogo_multiplicar_nivel_educacion" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_nivel_educacion">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="factor">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_producto_presentacion">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_catalogo_producto_qaliwarma">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="anno">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="numero_entrega">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="catalogo_multiplicar_nivel_educacion_pk" type="pk-constr" table="bdcomer.catalogo_multiplicar_nivel_educacion">
+		<columns names="id_catalogo_multiplicar_nivel_educacion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="idx_id_requerimiento_volumen_002_producto" table="bdcomer.requerimiento_volumen_002_producto"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="id_requerimiento_volumen_002_producto"/>
+		</idxelement>
+</index>
+
+<index name="idx_id_catalogo_multiplicar_nivel_educacion" table="bdcomer.catalogo_multiplicar_nivel_educacion"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="id_catalogo_multiplicar_nivel_educacion"/>
+		</idxelement>
+</index>
+
+<constraint name="menu_perfilesdetalle_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.menu" table="bdcomer.perfilesdetalle">
+	<columns names="idmenu" ref-type="src-columns"/>
+	<columns names="idmenu" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="perfil_perfilesdetalle_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.perfil" table="bdcomer.perfilesdetalle">
+	<columns names="idperfil" ref-type="src-columns"/>
+	<columns names="idperfil" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="perfil_usuario_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.perfil" table="bdcomer.usuario">
+	<columns names="idperfil" ref-type="src-columns"/>
+	<columns names="idperfil" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="filial_usuario_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.filial" table="bdcomer.usuario">
+	<columns names="idfilial" ref-type="src-columns"/>
+	<columns names="idfilial" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="usuario_rol_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.usuario" table="bdcomer.rol">
+	<columns names="idusuario" ref-type="src-columns"/>
+	<columns names="idusuario" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_proveedorcliente" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.proveedorcliente" table="bdcomer.com001">
+	<columns names="idproveedorcliente" ref-type="src-columns"/>
+	<columns names="idproveedorcliente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_moneda" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.moneda" table="bdcomer.com001">
+	<columns names="idmoneda" ref-type="src-columns"/>
+	<columns names="id_moneda" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_almacen" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.almacen" table="bdcomer.com001">
+	<columns names="idalmacen" ref-type="src-columns"/>
+	<columns names="idalmacen" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="laboratorio_producto_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.laboratorio" table="bdcomer.producto">
+	<columns names="idlaboratorio" ref-type="src-columns"/>
+	<columns names="idlaboratorio" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="modelo_producto_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.modelo" table="bdcomer.producto">
+	<columns names="idmodelo" ref-type="src-columns"/>
+	<columns names="idmodelo" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="marca_producto_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.marca" table="bdcomer.producto">
+	<columns names="idmarca" ref-type="src-columns"/>
+	<columns names="idmarca" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="unidadmedida_producto_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.unidadmedida" table="bdcomer.producto">
+	<columns names="idunidadmedida" ref-type="src-columns"/>
+	<columns names="idunidadmedida" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_categoria" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.categoria" table="bdcomer.producto">
+	<columns names="idcategoria" ref-type="src-columns"/>
+	<columns names="idcategoria" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_producto_moneda" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.moneda" table="bdcomer.producto">
+	<columns names="idmoneda" ref-type="src-columns"/>
+	<columns names="id_moneda" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_producto_catalogo_qaliwarma" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.catalogo_producto_qaliwarma" table="bdcomer.producto">
+	<columns names="id_catalogo_producto_qaliwarma" ref-type="src-columns"/>
+	<columns names="id_catalogo_producto_qaliwarma" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_proveedorcliente_documentoidentificacion" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.documentoidentificacion" table="bdcomer.proveedorcliente">
+	<columns names="iddocumentoidentificacion" ref-type="src-columns"/>
+	<columns names="iddocumentoidentificacion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_com001" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.com001" table="bdcomer.com002">
+	<columns names="idcom001" ref-type="src-columns"/>
+	<columns names="idcom001" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_moneda" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.moneda" table="bdcomer.gasto001">
+	<columns names="idmoneda" ref-type="src-columns"/>
+	<columns names="id_moneda" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_proveedorcliente" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.proveedorcliente" table="bdcomer.gasto001">
+	<columns names="idproveedorcliente" ref-type="src-columns"/>
+	<columns names="idproveedorcliente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_tipodocumento" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.tipodocumento" table="bdcomer.gasto001">
+	<columns names="idtipodocumento" ref-type="src-columns"/>
+	<columns names="id_tipo_documento" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_com001" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.com001" table="bdcomer.ing001">
+	<columns names="idcom001" ref-type="src-columns"/>
+	<columns names="idcom001" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_empleado" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.empleado" table="bdcomer.ing001">
+	<columns names="idempleado" ref-type="src-columns"/>
+	<columns names="idempleado" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_almacen_destino" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.almacen" table="bdcomer.ing001">
+	<columns names="idalmacen" ref-type="src-columns"/>
+	<columns names="idalmacen" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_ing001_proveedorcliente" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.proveedorcliente" table="bdcomer.ing001">
+	<columns names="idproveedorcliente" ref-type="src-columns"/>
+	<columns names="idproveedorcliente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_periodo_almacen" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.periodoalmacen" table="bdcomer.ing001">
+	<columns names="idperiodoalmacen" ref-type="src-columns"/>
+	<columns names="idperiodoalmacen" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_ing001_motivoingreso" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.motivoingreso" table="bdcomer.ing001">
+	<columns names="idmotivoingreso" ref-type="src-columns"/>
+	<columns names="idmotivoingreso" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_ing001_traslado" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.traslado" table="bdcomer.ing001">
+	<columns names="idtraslado" ref-type="src-columns"/>
+	<columns names="idtraslado" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_ing001_tipodocumento" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.tipodocumento" table="bdcomer.ing001">
+	<columns names="id_tipo_documento" ref-type="src-columns"/>
+	<columns names="id_tipo_documento" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_ing001" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.ing001" table="bdcomer.ing002">
+	<columns names="iding001" ref-type="src-columns"/>
+	<columns names="iding001" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_producto_ingreso" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.producto" table="bdcomer.ing002">
+	<columns names="idproducto" ref-type="src-columns"/>
+	<columns names="idproducto" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_kardex_periodoalmacen" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.periodoalmacen" table="bdcomer.kardex">
+	<columns names="idperiodoalmacen" ref-type="src-columns"/>
+	<columns names="idperiodoalmacen" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_kardex_producto" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.producto" table="bdcomer.kardex">
+	<columns names="idproducto" ref-type="src-columns"/>
+	<columns names="idproducto" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_cierremensual_almacen" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.almacen" table="bdcomer.cierremensual">
+	<columns names="idalmacen" ref-type="src-columns"/>
+	<columns names="idalmacen" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_cierremensual_producto" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.producto" table="bdcomer.cierremensual">
+	<columns names="idproducto" ref-type="src-columns"/>
+	<columns names="idproducto" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_cierremensual_periodoalmacen" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.periodoalmacen" table="bdcomer.cierremensual">
+	<columns names="idperiodoalmacen" ref-type="src-columns"/>
+	<columns names="idperiodoalmacen" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_empleado" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.empleado" table="bdcomer.salida001">
+	<columns names="idempleado" ref-type="src-columns"/>
+	<columns names="idempleado" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_almacen_destino" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.almacen" table="bdcomer.salida001">
+	<columns names="idalmacen" ref-type="src-columns"/>
+	<columns names="idalmacen" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fi_proveedorcliente" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.proveedorcliente" table="bdcomer.salida001">
+	<columns names="idproveedorcliente" ref-type="src-columns"/>
+	<columns names="idproveedorcliente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_sal001_periodo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.periodoalmacen" table="bdcomer.salida001">
+	<columns names="idperiodoalmacen" ref-type="src-columns"/>
+	<columns names="idperiodoalmacen" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_salida001_motivosalida" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.motivosalida" table="bdcomer.salida001">
+	<columns names="idmotivosalida" ref-type="src-columns"/>
+	<columns names="idmotivosalida" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_salida001_ven001" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.ven001" table="bdcomer.salida001">
+	<columns names="idven001" ref-type="src-columns"/>
+	<columns names="idven001" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_salida001_salidatraslado" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.traslado" table="bdcomer.salida001">
+	<columns names="idtraslado" ref-type="src-columns"/>
+	<columns names="idtraslado" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_perfildetalle_perfilesdetallemantenimiento" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.perfilesdetalle" table="bdcomer.perfilesdetallemantenimiento">
+	<columns names="idsysperfilesdetalle" ref-type="src-columns"/>
+	<columns names="idsysperfilesdetalle" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_ing002kardex" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.ing002" table="bdcomer.ing002kardex">
+	<columns names="iding002" ref-type="src-columns"/>
+	<columns names="iding002" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_ing002kardex_kardex" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.kardex" table="bdcomer.ing002kardex">
+	<columns names="idkardex" ref-type="src-columns"/>
+	<columns names="idkardex" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_periodoalmacen_almacen" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.almacen" table="bdcomer.periodoalmacen">
+	<columns names="idalmacen" ref-type="src-columns"/>
+	<columns names="idalmacen" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_salida002_producto" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.producto" table="bdcomer.salida002">
+	<columns names="idproducto" ref-type="src-columns"/>
+	<columns names="idproducto" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_salida002_salida001" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.salida001" table="bdcomer.salida002">
+	<columns names="idsalida001" ref-type="src-columns"/>
+	<columns names="idsalida001" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_usuarioalmacen_almacen" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.almacen" table="bdcomer.usuarioalmacen">
+	<columns names="idalmacen" ref-type="src-columns"/>
+	<columns names="idalmacen" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_salida002kardex_salida002" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.salida002" table="bdcomer.salida002kardex">
+	<columns names="idsalida002" ref-type="src-columns"/>
+	<columns names="idsalida002" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_salida002kardex_kardex" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.kardex" table="bdcomer.salida002kardex">
+	<columns names="idkardex" ref-type="src-columns"/>
+	<columns names="idkardex" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_ven001_proveedorcliente" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.proveedorcliente" table="bdcomer.ven001">
+	<columns names="idproveedorcliente" ref-type="src-columns"/>
+	<columns names="idproveedorcliente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_ven001_aperturapuntoventa" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.aperturapuntoventa" table="bdcomer.ven001">
+	<columns names="idaperturapuntoventa" ref-type="src-columns"/>
+	<columns names="idaperturapuntoventa" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_ven001_tipodocumento" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.tipodocumento" table="bdcomer.ven001">
+	<columns names="id_tipo_documento" ref-type="src-columns"/>
+	<columns names="id_tipo_documento" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_ven001_modalidad_venta" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.modalidad_venta" table="bdcomer.ven001">
+	<columns names="id_modalidad_venta" ref-type="src-columns"/>
+	<columns names="id_modalidad_venta" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_ven001_moneda" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.moneda" table="bdcomer.ven001">
+	<columns names="id_moneda" ref-type="src-columns"/>
+	<columns names="id_moneda" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="ven_001_proveedorclientedireccion" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.proveedorclientedireccion" table="bdcomer.ven001">
+	<columns names="idproveedorclientedireccion" ref-type="src-columns"/>
+	<columns names="idproveedorclientedireccion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_ven002_ven001" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="bdcomer.ven001" table="bdcomer.ven002">
+	<columns names="idven001" ref-type="src-columns"/>
+	<columns names="idven001" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_stockactual_producto" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.producto" table="bdcomer.stockactual">
+	<columns names="idproducto" ref-type="src-columns"/>
+	<columns names="idproducto" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_stockactual_almacen" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.almacen" table="bdcomer.stockactual">
+	<columns names="idalmacen" ref-type="src-columns"/>
+	<columns names="idalmacen" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_salidadestino_almacen" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.almacen" table="bdcomer.traslado">
+	<columns names="idalmacen" ref-type="src-columns"/>
+	<columns names="idalmacen" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_codigobarra_producto" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.producto" table="bdcomer.codigobarra">
+	<columns names="idproducto" ref-type="src-columns"/>
+	<columns names="idproducto" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_proveedorcllientedireccion_proveedorcliente" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.proveedorcliente" table="bdcomer.proveedorclientedireccion">
+	<columns names="idproveedorcliente" ref-type="src-columns"/>
+	<columns names="idproveedorcliente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_lineacredito_moneda" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.moneda" table="bdcomer.lineacredito">
+	<columns names="idmoneda" ref-type="src-columns"/>
+	<columns names="id_moneda" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_lineacredito_proveedorcliente" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.proveedorcliente" table="bdcomer.lineacredito">
+	<columns names="idproveedorcliente" ref-type="src-columns"/>
+	<columns names="idproveedorcliente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_aperturapos_puntoventa" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.puntoventa" table="bdcomer.aperturapuntoventa">
+	<columns names="idpos" ref-type="src-columns"/>
+	<columns names="idpuntoventa" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_aperturapos_empleado" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.empleado" table="bdcomer.aperturapuntoventa">
+	<columns names="idempleado" ref-type="src-columns"/>
+	<columns names="idempleado" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_usuarioempleado_usuario" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.usuario" table="bdcomer.usuarioempleado">
+	<columns names="idusuario" ref-type="src-columns"/>
+	<columns names="idusuario" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_usuarioempleado_empleado" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.empleado" table="bdcomer.usuarioempleado">
+	<columns names="idempleado" ref-type="src-columns"/>
+	<columns names="idempleado" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_requerimiento_volumen_001_ubigeo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.ubigeo" table="bdcomer.requerimiento_volumen_001">
+	<columns names="idubigeo" ref-type="src-columns"/>
+	<columns names="idubigeo" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_requerimiento_volumen_001_codigomodular" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.codigomodular_iinstitucion_educativa" table="bdcomer.requerimiento_volumen_001">
+	<columns names="codigo_modular" ref-type="src-columns"/>
+	<columns names="codigo_modular" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_requerimiento_volumen_001_nivel_educacion" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.nivel_educacion" table="bdcomer.requerimiento_volumen_001">
+	<columns names="id_nivel_educacion" ref-type="src-columns"/>
+	<columns names="id_nivel_educacion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_requerimiento_volumen_001_modalidad_entrega" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.modalidad_entrega_alimentos" table="bdcomer.requerimiento_volumen_001">
+	<columns names="id_modalidad_entrega_alimentos" ref-type="src-columns"/>
+	<columns names="id_modalidad_entrega_alimentos" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_requerimiento_volumen_001_horario_alimentacion" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.horario_alimentacion" table="bdcomer.requerimiento_volumen_001">
+	<columns names="id_horario_alimentacion" ref-type="src-columns"/>
+	<columns names="id_horario_alimentacion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_requerimiento_001_region_alimentaria" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.region_alimentaria" table="bdcomer.requerimiento_volumen_001">
+	<columns names="id_region_alimentaria" ref-type="src-columns"/>
+	<columns names="id_region_alimentaria" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_requerimiento_volumen_001_entrega_por_item" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.entrega_por_item" table="bdcomer.requerimiento_volumen_001">
+	<columns names="id_entrega_por_item" ref-type="src-columns"/>
+	<columns names="id_entrega_por_item" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_requerimiento_volumen_002_requerimiento_volumen_001" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="bdcomer.requerimiento_volumen_001" table="bdcomer.requerimiento_volumen_002">
+	<columns names="id_requerimiento_volumen_001" ref-type="src-columns"/>
+	<columns names="id_requerimiento_volumen_001" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_requerimiento_volumen_002_numero_entrega" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.numero_entrega" table="bdcomer.requerimiento_volumen_002">
+	<columns names="id_numero_entrega" ref-type="src-columns"/>
+	<columns names="id_numero_entrega" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_producto_presentacion_catalogo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.catalogo_producto_qaliwarma" table="bdcomer.producto_presentacion">
+	<columns names="id_catalogo_producto_qaliwarma" ref-type="src-columns"/>
+	<columns names="id_catalogo_producto_qaliwarma" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_volumen_convertico_requerimiento" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="bdcomer.requerimiento_volumen_002_producto" table="bdcomer.volumen_convertido_envace">
+	<columns names="id_requerimiento_volumen_002_producto" ref-type="src-columns"/>
+	<columns names="id_requerimiento_volumen_002_producto" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_volumen_convertido_envace_producto_presentacion" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="bdcomer.producto_presentacion" table="bdcomer.volumen_convertido_envace">
+	<columns names="id_producto_presentacion" ref-type="src-columns"/>
+	<columns names="id_producto_presentacion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_volumen_catalogo_marca" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.catalogo_marca" table="bdcomer.volumen_convertido_envace">
+	<columns names="id_catalogo_marca" ref-type="src-columns"/>
+	<columns names="id_catalogo_marca" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_volumen_convertido_envace_entrega_por_item" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.entrega_por_item" table="bdcomer.volumen_convertido_envace">
+	<columns names="id_entrega_por_item" ref-type="src-columns"/>
+	<columns names="id_entrega_por_item" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_producto_por_numero_entrega_catalogo_qaliwarma" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.catalogo_producto_qaliwarma" table="bdcomer.producto_por_numero_entrega">
+	<columns names="id_catalogo_producto_qaliwarma" ref-type="src-columns"/>
+	<columns names="id_catalogo_producto_qaliwarma" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_producto_por_numero_entrega_numero_entrega" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.entrega_por_item" table="bdcomer.producto_por_numero_entrega">
+	<columns names="id_entregas_por_item" ref-type="src-columns"/>
+	<columns names="id_entrega_por_item" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_requerimiento_producto" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.producto_por_numero_entrega" table="bdcomer.requerimiento_volumen_002_producto">
+	<columns names="id_producto_por_numero_entrega" ref-type="src-columns"/>
+	<columns names="id_producto_por_numero_entrega" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_requerimiento_volumen_002_producto_req_vol_002" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="bdcomer.requerimiento_volumen_002" table="bdcomer.requerimiento_volumen_002_producto">
+	<columns names="id_requerimiento_volumen_002" ref-type="src-columns"/>
+	<columns names="id_requerimiento_volumen_002" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_catalogo_unidadmedida" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.unidadmedida" table="bdcomer.catalogo_producto_qaliwarma">
+	<columns names="idunidadmedida" ref-type="src-columns"/>
+	<columns names="idunidadmedida" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_catalogo_producto_qaliwarma_envase" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.envase" table="bdcomer.catalogo_producto_qaliwarma">
+	<columns names="id_envase" ref-type="src-columns"/>
+	<columns names="id_envase" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_catalogo_producto_qaliwarma_unidad_medida_trabajo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.unidad_medida_trabajo" table="bdcomer.catalogo_producto_qaliwarma">
+	<columns names="id_unidad_medida_trabajo" ref-type="src-columns"/>
+	<columns names="id_unidad_medida_trabajo" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_entregas_por_item_item" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.item_entrega" table="bdcomer.entrega_por_item">
+	<columns names="item" ref-type="src-columns"/>
+	<columns names="item" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_entregas_por_item_numero_entrega" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.numero_entrega" table="bdcomer.entrega_por_item">
+	<columns names="id_numero_entrega" ref-type="src-columns"/>
+	<columns names="id_numero_entrega" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_entrega_por_item_proveedor_cliente" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.proveedorcliente" table="bdcomer.entrega_por_item">
+	<columns names="idproveedorcliente" ref-type="src-columns"/>
+	<columns names="idproveedorcliente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_entrega_por_item_punto_partida" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.punto_partida" table="bdcomer.entrega_por_item">
+	<columns names="id_punto_partida" ref-type="src-columns"/>
+	<columns names="id_punto_partida" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_entrega_por_item_vehiculo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.vehiculo" table="bdcomer.entrega_por_item">
+	<columns names="id_vehiculo" ref-type="src-columns"/>
+	<columns names="id_vehiculo" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_entrega_por_item_chofer" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.chofer" table="bdcomer.entrega_por_item">
+	<columns names="id_chofer" ref-type="src-columns"/>
+	<columns names="id_chofer" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_entrega_por_item_transportista" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.transportista" table="bdcomer.entrega_por_item">
+	<columns names="id_transportista" ref-type="src-columns"/>
+	<columns names="id_transportista" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_catalogo_bonificacon_region_alimentaria" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.region_alimentaria" table="bdcomer.catalogo_bonificacion">
+	<columns names="id_region_alimentaria" ref-type="src-columns"/>
+	<columns names="id_region_alimentaria" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_catalogo_bonificacion_producto_por_numero_entrega" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.producto_por_numero_entrega" table="bdcomer.catalogo_bonificacion">
+	<columns names="id_producto_por_numero_entrega" ref-type="src-columns"/>
+	<columns names="id_producto_por_numero_entrega" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_catalogo_bonificacion_horario" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.horario_alimentacion" table="bdcomer.catalogo_bonificacion">
+	<columns names="id_horario_alimentacion" ref-type="src-columns"/>
+	<columns names="id_horario_alimentacion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_catalogo_marca_producto_por_numero_entrega" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.producto_por_numero_entrega" table="bdcomer.catalogo_marca">
+	<columns names="id_producto_por_numero_entrega" ref-type="src-columns"/>
+	<columns names="id_producto_por_numero_entrega" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_catalogo_marca_producto_presentacion" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="bdcomer.producto_presentacion" table="bdcomer.catalogo_marca">
+	<columns names="id_producto_presentacion" ref-type="src-columns"/>
+	<columns names="id_producto_presentacion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_catalogo_marca" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.marca" table="bdcomer.catalogo_marca">
+	<columns names="idmarca" ref-type="src-columns"/>
+	<columns names="idmarca" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_guia_remision_001_proveedorcliente" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.proveedorcliente" table="bdcomer.guia_remision_001">
+	<columns names="idproveedorcliente" ref-type="src-columns"/>
+	<columns names="idproveedorcliente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_guia_remision_001_requerimiento_volumen_001" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.requerimiento_volumen_001" table="bdcomer.guia_remision_001">
+	<columns names="id_requerimiento_volumen_001" ref-type="src-columns"/>
+	<columns names="id_requerimiento_volumen_001" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_guia_remision_001_vehiculo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.vehiculo" table="bdcomer.guia_remision_001">
+	<columns names="id_vehiculo" ref-type="src-columns"/>
+	<columns names="id_vehiculo" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_guia_remision_001_chofer" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.chofer" table="bdcomer.guia_remision_001">
+	<columns names="id_chofer" ref-type="src-columns"/>
+	<columns names="id_chofer" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_guia_remision_001_transportista" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.transportista" table="bdcomer.guia_remision_001">
+	<columns names="id_transportista" ref-type="src-columns"/>
+	<columns names="id_transportista" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_guia_remision_001_punto_partida" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.punto_partida" table="bdcomer.guia_remision_001">
+	<columns names="id_punto_partida" ref-type="src-columns"/>
+	<columns names="id_punto_partida" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_guia_remision_001_punto_llegada" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.punto_llegada" table="bdcomer.guia_remision_001">
+	<columns names="id_punto_llegada" ref-type="src-columns"/>
+	<columns names="id_punto_llegada" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_guia_remision_002_guia_remision_001" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="bdcomer.guia_remision_001" table="bdcomer.guia_remision_002">
+	<columns names="id_guia_remision_001" ref-type="src-columns"/>
+	<columns names="id_guia_remision_001" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_guia_remision_002_volumen_convertido_envase" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.volumen_convertido_envace" table="bdcomer.guia_remision_002">
+	<columns names="id_volumen_convertido_envace" ref-type="src-columns"/>
+	<columns names="id_volumen_convertido_envace" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_transportista_proveedorcliente" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.proveedorcliente" table="bdcomer.transportista">
+	<columns names="idproveedorcliente" ref-type="src-columns"/>
+	<columns names="idproveedorcliente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_matriz_requerimiento_volumen_001" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="bdcomer.requerimiento_volumen_001" table="bdcomer.matriz">
+	<columns names="id_requerimiento_volumen_001" ref-type="src-columns"/>
+	<columns names="id_requerimiento_volumen_001" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_matriz_producto_por_numero_entrega" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.producto_por_numero_entrega" table="bdcomer.matriz">
+	<columns names="id_producto_por_numero_entrega" ref-type="src-columns"/>
+	<columns names="id_producto_por_numero_entrega" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_ruta_distribucion_empleado_distribuidor" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.empleado_distribuidor" table="bdcomer.ruta_distribucion">
+	<columns names="id_empleado_distribuidor" ref-type="src-columns"/>
+	<columns names="id_empleado_distribuidor" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_ruta_distribucion_vehiculo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.vehiculo" table="bdcomer.ruta_distribucion">
+	<columns names="id_vehiculo" ref-type="src-columns"/>
+	<columns names="id_vehiculo" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_ruta_distribucion_chofer" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.chofer" table="bdcomer.ruta_distribucion">
+	<columns names="id_chofer" ref-type="src-columns"/>
+	<columns names="id_chofer" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_ruta_distribucion_detalle_ruta_distribucion" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.ruta_distribucion" table="bdcomer.ruta_distribucion_detalle">
+	<columns names="id_ruta_distribucion" ref-type="src-columns"/>
+	<columns names="id_ruta_distribucion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_ruta_distribucion_detalle_requerimiento_volumen_001" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.requerimiento_volumen_001" table="bdcomer.ruta_distribucion_detalle">
+	<columns names="id_requerimiento_volumen_001" ref-type="src-columns"/>
+	<columns names="id_requerimiento_volumen_001" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_catalogo_lote_catalogo_marca" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="bdcomer.catalogo_marca" table="bdcomer.catalogo_lote">
+	<columns names="id_catalogo_marca" ref-type="src-columns"/>
+	<columns names="id_catalogo_marca" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_matriz_presentacion_matriz" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.matriz" table="bdcomer.matriz_presentacion">
+	<columns names="id_matriz" ref-type="src-columns"/>
+	<columns names="id_matriz" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_matriz_presentacion_producto_presentacion" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.producto_presentacion" table="bdcomer.matriz_presentacion">
+	<columns names="id_producto_presentacion" ref-type="src-columns"/>
+	<columns names="id_producto_presentacion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_presentacion_marca_matriz_presentacion" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.matriz_presentacion" table="bdcomer.presentacion_marca">
+	<columns names="id_matriz_presentacion" ref-type="src-columns"/>
+	<columns names="id_matriz_presentacion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_presentacion_marca_catalogo_marca" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="bdcomer.catalogo_marca" table="bdcomer.presentacion_marca">
+	<columns names="id_catalogo_marca" ref-type="src-columns"/>
+	<columns names="id_catalogo_marca" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="marca_lote_presentacion_marca" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.presentacion_marca" table="bdcomer.marca_lote">
+	<columns names="id_presentacion_marca" ref-type="src-columns"/>
+	<columns names="id_presentacion_marca" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_marca_lote_catalogo_lote" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.catalogo_lote" table="bdcomer.marca_lote">
+	<columns names="id_catalogo_lote" ref-type="src-columns"/>
+	<columns names="id_catalogo_lote" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_monto_contratado_entrega_por_item" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.entrega_por_item" table="bdcomer.monto_contratado">
+	<columns names="id_entrega_por_item" ref-type="src-columns"/>
+	<columns names="id_entrega_por_item" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_monto_contratado_nivel_educacion" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.nivel_educacion" table="bdcomer.monto_contratado">
+	<columns names="id_nivel_educacion" ref-type="src-columns"/>
+	<columns names="id_nivel_educacion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_monto_contratado_horario_alimentacion" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.horario_alimentacion" table="bdcomer.monto_contratado">
+	<columns names="id_horario_alimentacion" ref-type="src-columns"/>
+	<columns names="id_horario_alimentacion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_piking_catalogo_lote" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.catalogo_lote" table="bdcomer.piking">
+	<columns names="id_catalogo_lote" ref-type="src-columns"/>
+	<columns names="id_catalogo_lote" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="pikign_requerimiento_volumen_001" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.requerimiento_volumen_001" table="bdcomer.piking">
+	<columns names="id_requerimiento_volumen_001" ref-type="src-columns"/>
+	<columns names="id_requerimiento_volumen_001" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_piking_volumen_convertido_envace" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.volumen_convertido_envace" table="bdcomer.piking">
+	<columns names="id_volumen_convertido_envace" ref-type="src-columns"/>
+	<columns names="id_volumen_convertido_envace" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_catalogo_multiplicar_nivel_educacion_nivel_edu" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.nivel_educacion" table="bdcomer.catalogo_multiplicar_nivel_educacion">
+	<columns names="id_nivel_educacion" ref-type="src-columns"/>
+	<columns names="id_nivel_educacion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_catalogo_multiplicar_producto_present" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.producto_presentacion" table="bdcomer.catalogo_multiplicar_nivel_educacion">
+	<columns names="id_producto_presentacion" ref-type="src-columns"/>
+	<columns names="id_producto_presentacion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_catalogo_multiplicar_catalogo_producto" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.catalogo_producto_qaliwarma" table="bdcomer.catalogo_multiplicar_nivel_educacion">
+	<columns names="id_catalogo_producto_qaliwarma" ref-type="src-columns"/>
+	<columns names="id_catalogo_producto_qaliwarma" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_perfilesdetalle_menu" type="relfk"
+	 src-table="bdcomer.perfilesdetalle"
+	 dst-table="bdcomer.menu" reference-fk="menu_perfilesdetalle_fk"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_perfilesdetalle_perfil" type="relfk"
+	 src-table="bdcomer.perfilesdetalle"
+	 dst-table="bdcomer.perfil" reference-fk="perfil_perfilesdetalle_fk"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_usuario_perfil" type="relfk"
+	 src-table="bdcomer.usuario"
+	 dst-table="bdcomer.perfil" reference-fk="perfil_usuario_fk"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_usuario_filial" type="relfk"
+	 src-table="bdcomer.usuario"
+	 dst-table="bdcomer.filial" reference-fk="filial_usuario_fk"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_rol_usuario" type="relfk"
+	 src-table="bdcomer.rol"
+	 dst-table="bdcomer.usuario" reference-fk="usuario_rol_fk"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_com001_proveedorcliente" type="relfk"
+	 src-table="bdcomer.com001"
+	 dst-table="bdcomer.proveedorcliente" reference-fk="fk_proveedorcliente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_com001_moneda" type="relfk"
+	 src-table="bdcomer.com001"
+	 dst-table="bdcomer.moneda" reference-fk="fk_moneda"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_com001_almacen" type="relfk"
+	 src-table="bdcomer.com001"
+	 dst-table="bdcomer.almacen" reference-fk="fk_almacen"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_producto_laboratorio" type="relfk"
+	 src-table="bdcomer.producto"
+	 dst-table="bdcomer.laboratorio" reference-fk="laboratorio_producto_fk"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_producto_modelo" type="relfk"
+	 src-table="bdcomer.producto"
+	 dst-table="bdcomer.modelo" reference-fk="modelo_producto_fk"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_producto_marca" type="relfk"
+	 src-table="bdcomer.producto"
+	 dst-table="bdcomer.marca" reference-fk="marca_producto_fk"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_producto_unidadmedida" type="relfk"
+	 src-table="bdcomer.producto"
+	 dst-table="bdcomer.unidadmedida" reference-fk="unidadmedida_producto_fk"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_producto_categoria" type="relfk"
+	 src-table="bdcomer.producto"
+	 dst-table="bdcomer.categoria" reference-fk="fk_categoria"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_producto_moneda" type="relfk"
+	 src-table="bdcomer.producto"
+	 dst-table="bdcomer.moneda" reference-fk="fk_producto_moneda"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_com002_com001" type="relfk"
+	 src-table="bdcomer.com002"
+	 dst-table="bdcomer.com001" reference-fk="fk_com001"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_gasto001_moneda" type="relfk"
+	 src-table="bdcomer.gasto001"
+	 dst-table="bdcomer.moneda" reference-fk="fk_moneda"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_gasto001_proveedorcliente" type="relfk"
+	 src-table="bdcomer.gasto001"
+	 dst-table="bdcomer.proveedorcliente" reference-fk="fk_proveedorcliente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_gasto001_tipodocumento" type="relfk"
+	 src-table="bdcomer.gasto001"
+	 dst-table="bdcomer.tipodocumento" reference-fk="fk_tipodocumento"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ing001_com001" type="relfk"
+	 src-table="bdcomer.ing001"
+	 dst-table="bdcomer.com001" reference-fk="fk_com001"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ing001_empleado" type="relfk"
+	 src-table="bdcomer.ing001"
+	 dst-table="bdcomer.empleado" reference-fk="fk_empleado"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ing001_almacen" type="relfk"
+	 src-table="bdcomer.ing001"
+	 dst-table="bdcomer.almacen" reference-fk="fk_almacen_destino"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ing001_proveedorcliente" type="relfk"
+	 src-table="bdcomer.ing001"
+	 dst-table="bdcomer.proveedorcliente" reference-fk="fk_ing001_proveedorcliente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ing001_periodoalmacen" type="relfk"
+	 src-table="bdcomer.ing001"
+	 dst-table="bdcomer.periodoalmacen" reference-fk="fk_periodo_almacen"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_ing001_motivoingreso" type="relfk"
+	 src-table="bdcomer.ing001"
+	 dst-table="bdcomer.motivoingreso" reference-fk="fk_ing001_motivoingreso"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ing001_traslado" type="relfk"
+	 src-table="bdcomer.ing001"
+	 dst-table="bdcomer.traslado" reference-fk="fk_ing001_traslado"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ing002_ing001" type="relfk"
+	 src-table="bdcomer.ing002"
+	 dst-table="bdcomer.ing001" reference-fk="fk_ing001"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ing002_producto" type="relfk"
+	 src-table="bdcomer.ing002"
+	 dst-table="bdcomer.producto" reference-fk="fk_producto_ingreso"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_kardex_periodoalmacen" type="relfk"
+	 src-table="bdcomer.kardex"
+	 dst-table="bdcomer.periodoalmacen" reference-fk="fk_kardex_periodoalmacen"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_cierremensual_almacen" type="relfk"
+	 src-table="bdcomer.cierremensual"
+	 dst-table="bdcomer.almacen" reference-fk="fk_cierremensual_almacen"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_cierremensual_producto" type="relfk"
+	 src-table="bdcomer.cierremensual"
+	 dst-table="bdcomer.producto" reference-fk="fk_cierremensual_producto"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_cierremensual_periodoalmacen" type="relfk"
+	 src-table="bdcomer.cierremensual"
+	 dst-table="bdcomer.periodoalmacen" reference-fk="fk_cierremensual_periodoalmacen"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_salida001_empleado" type="relfk"
+	 src-table="bdcomer.salida001"
+	 dst-table="bdcomer.empleado" reference-fk="fk_empleado"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_salida001_almacen" type="relfk"
+	 src-table="bdcomer.salida001"
+	 dst-table="bdcomer.almacen" reference-fk="fk_almacen_destino"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_salida001_proveedorcliente" type="relfk"
+	 src-table="bdcomer.salida001"
+	 dst-table="bdcomer.proveedorcliente" reference-fk="fi_proveedorcliente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_salida001_periodoalmacen" type="relfk"
+	 src-table="bdcomer.salida001"
+	 dst-table="bdcomer.periodoalmacen" reference-fk="fk_sal001_periodo"
+	 src-required="false" dst-required="false">
+	<label ref-type="dst-label">
+		<position x="0.04" y="0.8"/>
+	</label>
+</relationship>
+
+<relationship name="rel_salida001_motivosalida" type="relfk"
+	 src-table="bdcomer.salida001"
+	 dst-table="bdcomer.motivosalida" reference-fk="fk_salida001_motivosalida"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_salida001_ven001" type="relfk"
+	 src-table="bdcomer.salida001"
+	 dst-table="bdcomer.ven001" reference-fk="fk_salida001_ven001"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_salida001_traslado" type="relfk"
+	 src-table="bdcomer.salida001"
+	 dst-table="bdcomer.traslado" reference-fk="fk_salida001_salidatraslado"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_perfilesdetallemantenimiento_perfilesdetalle" type="relfk"
+	 src-table="bdcomer.perfilesdetallemantenimiento"
+	 dst-table="bdcomer.perfilesdetalle" reference-fk="fk_perfildetalle_perfilesdetallemantenimiento"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ing002kardex_ing002" type="relfk"
+	 src-table="bdcomer.ing002kardex"
+	 dst-table="bdcomer.ing002" reference-fk="fk_ing002kardex"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ing002kardex_kardex" type="relfk"
+	 src-table="bdcomer.ing002kardex"
+	 dst-table="bdcomer.kardex" reference-fk="fk_ing002kardex_kardex"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_periodoalmacen_almacen" type="relfk"
+	 src-table="bdcomer.periodoalmacen"
+	 dst-table="bdcomer.almacen" reference-fk="fk_periodoalmacen_almacen"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_salida002_producto" type="relfk"
+	 src-table="bdcomer.salida002"
+	 dst-table="bdcomer.producto" reference-fk="fk_salida002_producto"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_salida002_salida001" type="relfk"
+	 src-table="bdcomer.salida002"
+	 dst-table="bdcomer.salida001" reference-fk="fk_salida002_salida001"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_usuarioalmacen_almacen" type="relfk"
+	 src-table="bdcomer.usuarioalmacen"
+	 dst-table="bdcomer.almacen" reference-fk="fk_usuarioalmacen_almacen"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_salida002kardex_salida002" type="relfk"
+	 src-table="bdcomer.salida002kardex"
+	 dst-table="bdcomer.salida002" reference-fk="fk_salida002kardex_salida002"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_salida002kardex_kardex" type="relfk"
+	 src-table="bdcomer.salida002kardex"
+	 dst-table="bdcomer.kardex" reference-fk="fk_salida002kardex_kardex"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ven001_proveedorcliente" type="relfk"
+	 src-table="bdcomer.ven001"
+	 dst-table="bdcomer.proveedorcliente" reference-fk="fk_ven001_proveedorcliente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ven002_ven001" type="relfk"
+	 src-table="bdcomer.ven002"
+	 dst-table="bdcomer.ven001" reference-fk="fk_ven002_ven001"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_stockactual_producto" type="relfk"
+	 src-table="bdcomer.stockactual"
+	 dst-table="bdcomer.producto" reference-fk="fk_stockactual_producto"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_stockactual_almacen" type="relfk"
+	 src-table="bdcomer.stockactual"
+	 dst-table="bdcomer.almacen" reference-fk="fk_stockactual_almacen"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_traslado_almacen" type="relfk"
+	 src-table="bdcomer.traslado"
+	 dst-table="bdcomer.almacen" reference-fk="fk_salidadestino_almacen"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_codigobarra_producto" type="relfk"
+	 src-table="bdcomer.codigobarra"
+	 dst-table="bdcomer.producto" reference-fk="fk_codigobarra_producto"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_proveedorclientedireccion_proveedorcliente" type="relfk"
+	 src-table="bdcomer.proveedorclientedireccion"
+	 dst-table="bdcomer.proveedorcliente" reference-fk="fk_proveedorcllientedireccion_proveedorcliente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_proveedorcliente_documentoidentificacion" type="relfk"
+	 src-table="bdcomer.proveedorcliente"
+	 dst-table="bdcomer.documentoidentificacion" reference-fk="fk_proveedorcliente_documentoidentificacion"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_lineacredito_moneda" type="relfk"
+	 src-table="bdcomer.lineacredito"
+	 dst-table="bdcomer.moneda" reference-fk="fk_lineacredito_moneda"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_lineacredito_proveedorcliente" type="relfk"
+	 src-table="bdcomer.lineacredito"
+	 dst-table="bdcomer.proveedorcliente" reference-fk="fk_lineacredito_proveedorcliente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ing001_tipodocumento" type="relfk"
+	 src-table="bdcomer.ing001"
+	 dst-table="bdcomer.tipodocumento" reference-fk="fk_ing001_tipodocumento"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_kardex_producto" type="relfk"
+	 src-table="bdcomer.kardex"
+	 dst-table="bdcomer.producto" reference-fk="fk_kardex_producto"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_aperturapos_pos" type="relfk"
+	 src-table="bdcomer.aperturapuntoventa"
+	 dst-table="bdcomer.puntoventa" reference-fk="fk_aperturapos_puntoventa"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_aperturapos_empleado" type="relfk"
+	 src-table="bdcomer.aperturapuntoventa"
+	 dst-table="bdcomer.empleado" reference-fk="fk_aperturapos_empleado"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ven001_aperturapos" type="relfk"
+	 src-table="bdcomer.ven001"
+	 dst-table="bdcomer.aperturapuntoventa" reference-fk="fk_ven001_aperturapuntoventa"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_usuarioempleado_usuario" type="relfk"
+	 src-table="bdcomer.usuarioempleado"
+	 dst-table="bdcomer.usuario" reference-fk="fk_usuarioempleado_usuario"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_usuarioempleado_empleado" type="relfk"
+	 src-table="bdcomer.usuarioempleado"
+	 dst-table="bdcomer.empleado" reference-fk="fk_usuarioempleado_empleado"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_requerimiento_volumen_002_requerimiento_volumen_001" type="relfk"
+	 src-table="bdcomer.requerimiento_volumen_002"
+	 dst-table="bdcomer.requerimiento_volumen_001" reference-fk="fk_requerimiento_volumen_002_requerimiento_volumen_001"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_requerimiento_volumen_001_ubigeo" type="relfk"
+	 src-table="bdcomer.requerimiento_volumen_001"
+	 dst-table="bdcomer.ubigeo" reference-fk="fk_requerimiento_volumen_001_ubigeo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_requerimiento_volumen_001_codigomodular_iinstitucion_educat" type="relfk"
+	 src-table="bdcomer.requerimiento_volumen_001"
+	 dst-table="bdcomer.codigomodular_iinstitucion_educativa" reference-fk="fk_requerimiento_volumen_001_codigomodular"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_requerimiento_volumen_001_nivel_educacion" type="relfk"
+	 src-table="bdcomer.requerimiento_volumen_001"
+	 dst-table="bdcomer.nivel_educacion" reference-fk="fk_requerimiento_volumen_001_nivel_educacion"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_requerimiento_volumen_001_modalidad_entrega_alimentos" type="relfk"
+	 src-table="bdcomer.requerimiento_volumen_001"
+	 dst-table="bdcomer.modalidad_entrega_alimentos" reference-fk="fk_requerimiento_volumen_001_modalidad_entrega"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_requerimiento_volumen_001_horario_alimentacion" type="relfk"
+	 src-table="bdcomer.requerimiento_volumen_001"
+	 dst-table="bdcomer.horario_alimentacion" reference-fk="fk_requerimiento_volumen_001_horario_alimentacion"
+	 src-required="false" dst-required="false">
+	<label ref-type="dst-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_producto_por_numero_entrega_catalogo_producto_qaliwarma" type="relfk"
+	 src-table="bdcomer.producto_por_numero_entrega"
+	 dst-table="bdcomer.catalogo_producto_qaliwarma" reference-fk="fk_producto_por_numero_entrega_catalogo_qaliwarma"
+	 src-required="false" dst-required="false">
+	<label ref-type="dst-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_requerimiento_volumen_002_producto_producto_por_numero_entr" type="relfk"
+	 src-table="bdcomer.requerimiento_volumen_002_producto"
+	 dst-table="bdcomer.producto_por_numero_entrega" reference-fk="fk_requerimiento_producto"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="9.90006" y="11.725"/>
+	</label>
+</relationship>
+
+<relationship name="rel_requerimiento_volumen_002_producto_requerimiento_volumen_00" type="relfk"
+	 src-table="bdcomer.requerimiento_volumen_002_producto"
+	 dst-table="bdcomer.requerimiento_volumen_002" reference-fk="fk_requerimiento_volumen_002_producto_req_vol_002"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_producto_presentacion_catalogo_producto_qaliwarma" type="relfk"
+	 src-table="bdcomer.producto_presentacion"
+	 dst-table="bdcomer.catalogo_producto_qaliwarma" reference-fk="fk_producto_presentacion_catalogo"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="0" y="0"/>
+	</label>
+	<label ref-type="dst-label">
+		<position x="0.0925" y="-0.275"/>
+	</label>
+</relationship>
+
+<relationship name="rel_producto_catalogo_producto_qaliwarma" type="relfk"
+	 src-table="bdcomer.producto"
+	 dst-table="bdcomer.catalogo_producto_qaliwarma" reference-fk="fk_producto_catalogo_qaliwarma"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="4.21375" y="13.725"/>
+	</label>
+</relationship>
+
+<relationship name="rel_catalogo_producto_qaliwarma_unidadmedida" type="relfk"
+	 src-table="bdcomer.catalogo_producto_qaliwarma"
+	 dst-table="bdcomer.unidadmedida" reference-fk="fk_catalogo_unidadmedida"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="0.14" y="-2.2"/>
+	</label>
+</relationship>
+
+<relationship name="rel_entregas_por_item_item_entrega" type="relfk"
+	 src-table="bdcomer.entrega_por_item"
+	 dst-table="bdcomer.item_entrega" reference-fk="fk_entregas_por_item_item"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="0" y="0"/>
+	</label>
+	<label ref-type="dst-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_entregas_por_item_numero_entrega" type="relfk"
+	 src-table="bdcomer.entrega_por_item"
+	 dst-table="bdcomer.numero_entrega" reference-fk="fk_entregas_por_item_numero_entrega"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_producto_por_numero_entrega_entrega_por_item" type="relfk"
+	 src-table="bdcomer.producto_por_numero_entrega"
+	 dst-table="bdcomer.entrega_por_item" reference-fk="fk_producto_por_numero_entrega_numero_entrega"
+	 src-required="false" dst-required="false">
+	<label ref-type="dst-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_volumen_convertido_envace_requerimiento_volumen_002_product" type="relfk"
+	 src-table="bdcomer.volumen_convertido_envace"
+	 dst-table="bdcomer.requerimiento_volumen_002_producto" reference-fk="fk_volumen_convertico_requerimiento"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="0.1425" y="-2.275"/>
+	</label>
+	<label ref-type="dst-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_volumen_convertido_envace_producto_presentacion" type="relfk"
+	 src-table="bdcomer.volumen_convertido_envace"
+	 dst-table="bdcomer.producto_presentacion" reference-fk="fk_volumen_convertido_envace_producto_presentacion"
+	 src-required="false" dst-required="false">
+	<label ref-type="dst-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_requerimiento_volumen_002_numero_entrega" type="relfk"
+	 src-table="bdcomer.requerimiento_volumen_002"
+	 dst-table="bdcomer.numero_entrega" reference-fk="fk_requerimiento_volumen_002_numero_entrega"
+	 src-required="false" dst-required="false">
+	<label ref-type="dst-label">
+		<position x="0.0925" y="-0.275"/>
+	</label>
+</relationship>
+
+<relationship name="rel_requerimiento_volumen_001_region_alimentaria" type="relfk"
+	 src-table="bdcomer.requerimiento_volumen_001"
+	 dst-table="bdcomer.region_alimentaria" reference-fk="fk_requerimiento_001_region_alimentaria"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_catalogo_bonificacion_region_alimentaria" type="relfk"
+	 src-table="bdcomer.catalogo_bonificacion"
+	 dst-table="bdcomer.region_alimentaria" reference-fk="fk_catalogo_bonificacon_region_alimentaria"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_catalogo_bonificacion_producto_por_numero_entrega" type="relfk"
+	 src-table="bdcomer.catalogo_bonificacion"
+	 dst-table="bdcomer.producto_por_numero_entrega" reference-fk="fk_catalogo_bonificacion_producto_por_numero_entrega"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_catalogo_bonificacion_horario_alimentacion" type="relfk"
+	 src-table="bdcomer.catalogo_bonificacion"
+	 dst-table="bdcomer.horario_alimentacion" reference-fk="fk_catalogo_bonificacion_horario"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="0" y="0"/>
+	</label>
+	<label ref-type="dst-label">
+		<position x="0.0925" y="19.725"/>
+	</label>
+</relationship>
+
+<relationship name="rel_catalogo_marca_producto_presentacion" type="relfk"
+	 src-table="bdcomer.catalogo_marca"
+	 dst-table="bdcomer.producto_presentacion" reference-fk="fk_catalogo_marca_producto_presentacion"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_catalogo_marca_producto_por_numero_entrega" type="relfk"
+	 src-table="bdcomer.catalogo_marca"
+	 dst-table="bdcomer.producto_por_numero_entrega" reference-fk="fk_catalogo_marca_producto_por_numero_entrega"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_catalogo_marca_marca" type="relfk"
+	 src-table="bdcomer.catalogo_marca"
+	 dst-table="bdcomer.marca" reference-fk="fk_catalogo_marca"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_volumen_convertido_envace_catalogo_marca" type="relfk"
+	 src-table="bdcomer.volumen_convertido_envace"
+	 dst-table="bdcomer.catalogo_marca" reference-fk="fk_volumen_catalogo_marca"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="5.90006" y="1.725"/>
+	</label>
+	<label ref-type="dst-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_guia_remision_002_guia_remision_001" type="relfk"
+	 src-table="bdcomer.guia_remision_002"
+	 dst-table="bdcomer.guia_remision_001" reference-fk="fk_guia_remision_002_guia_remision_001"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_guia_remision_001_proveedorcliente" type="relfk"
+	 src-table="bdcomer.guia_remision_001"
+	 dst-table="bdcomer.proveedorcliente" reference-fk="fk_guia_remision_001_proveedorcliente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_guia_remision_001_requerimiento_volumen_001" type="relfk"
+	 src-table="bdcomer.guia_remision_001"
+	 dst-table="bdcomer.requerimiento_volumen_001" reference-fk="fk_guia_remision_001_requerimiento_volumen_001"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_catalogo_producto_qaliwarma_envase" type="relfk"
+	 src-table="bdcomer.catalogo_producto_qaliwarma"
+	 dst-table="bdcomer.envase" reference-fk="fk_catalogo_producto_qaliwarma_envase"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_guia_remision_001_vehiculo" type="relfk"
+	 src-table="bdcomer.guia_remision_001"
+	 dst-table="bdcomer.vehiculo" reference-fk="fk_guia_remision_001_vehiculo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_guia_remision_001_chofer" type="relfk"
+	 src-table="bdcomer.guia_remision_001"
+	 dst-table="bdcomer.chofer" reference-fk="fk_guia_remision_001_chofer"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_guia_remision_001_transportista" type="relfk"
+	 src-table="bdcomer.guia_remision_001"
+	 dst-table="bdcomer.transportista" reference-fk="fk_guia_remision_001_transportista"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="9.90006" y="-0.275"/>
+	</label>
+</relationship>
+
+<relationship name="rel_guia_remision_001_punto_partida" type="relfk"
+	 src-table="bdcomer.guia_remision_001"
+	 dst-table="bdcomer.punto_partida" reference-fk="fk_guia_remision_001_punto_partida"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_guia_remision_001_punto_llegada" type="relfk"
+	 src-table="bdcomer.guia_remision_001"
+	 dst-table="bdcomer.punto_llegada" reference-fk="fk_guia_remision_001_punto_llegada"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_transportista_proveedorcliente" type="relfk"
+	 src-table="bdcomer.transportista"
+	 dst-table="bdcomer.proveedorcliente" reference-fk="fk_transportista_proveedorcliente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_requerimiento_volumen_001_entrega_por_item" type="relfk"
+	 src-table="bdcomer.requerimiento_volumen_001"
+	 dst-table="bdcomer.entrega_por_item" reference-fk="fk_requerimiento_volumen_001_entrega_por_item"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="0" y="0"/>
+	</label>
+	<label ref-type="dst-label">
+		<position x="0.0925" y="-0.275"/>
+	</label>
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_ruta_distribucion_detalle_ruta_distribucion" type="relfk"
+	 src-table="bdcomer.ruta_distribucion_detalle"
+	 dst-table="bdcomer.ruta_distribucion" reference-fk="fk_ruta_distribucion_detalle_ruta_distribucion"
+	 src-required="false" dst-required="false">
+	<label ref-type="dst-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_ruta_distribucion_detalle_requerimiento_volumen_001" type="relfk"
+	 src-table="bdcomer.ruta_distribucion_detalle"
+	 dst-table="bdcomer.requerimiento_volumen_001" reference-fk="fk_ruta_distribucion_detalle_requerimiento_volumen_001"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="0.900056" y="-8.275"/>
+	</label>
+</relationship>
+
+<relationship name="rel_matriz_requerimiento_volumen_001" type="relfk"
+	 src-table="bdcomer.matriz"
+	 dst-table="bdcomer.requerimiento_volumen_001" reference-fk="fk_matriz_requerimiento_volumen_001"
+	 src-required="false" dst-required="false">
+	<label ref-type="dst-label">
+		<position x="-0.899944" y="-0.275"/>
+	</label>
+</relationship>
+
+<relationship name="rel_catalogo_lote_catalogo_marca" type="relfk"
+	 src-table="bdcomer.catalogo_lote"
+	 dst-table="bdcomer.catalogo_marca" reference-fk="fk_catalogo_lote_catalogo_marca"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ruta_distribucion_empleado_distribuidor" type="relfk"
+	 src-table="bdcomer.ruta_distribucion"
+	 dst-table="bdcomer.empleado_distribuidor" reference-fk="fk_ruta_distribucion_empleado_distribuidor"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_matriz_producto_por_numero_entrega" type="relfk"
+	 src-table="bdcomer.matriz"
+	 dst-table="bdcomer.producto_por_numero_entrega" reference-fk="fk_matriz_producto_por_numero_entrega"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_catalogo_producto_qaliwarma_unidad_medida_trabajo" type="relfk"
+	 src-table="bdcomer.catalogo_producto_qaliwarma"
+	 dst-table="bdcomer.unidad_medida_trabajo" reference-fk="fk_catalogo_producto_qaliwarma_unidad_medida_trabajo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_matriz_presentacion_matriz" type="relfk"
+	 src-table="bdcomer.matriz_presentacion"
+	 dst-table="bdcomer.matriz" reference-fk="fk_matriz_presentacion_matriz"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_presentacion_marca_matriz_presentacion" type="relfk"
+	 src-table="bdcomer.presentacion_marca"
+	 dst-table="bdcomer.matriz_presentacion" reference-fk="fk_presentacion_marca_matriz_presentacion"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_marca_lote_presentacion_marca" type="relfk"
+	 src-table="bdcomer.marca_lote"
+	 dst-table="bdcomer.presentacion_marca" reference-fk="marca_lote_presentacion_marca"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_matriz_presentacion_producto_presentacion" type="relfk"
+	 src-table="bdcomer.matriz_presentacion"
+	 dst-table="bdcomer.producto_presentacion" reference-fk="fk_matriz_presentacion_producto_presentacion"
+	 src-required="false" dst-required="false">
+	<label ref-type="dst-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_presentacion_marca_catalogo_marca" type="relfk"
+	 src-table="bdcomer.presentacion_marca"
+	 dst-table="bdcomer.catalogo_marca" reference-fk="fk_presentacion_marca_catalogo_marca"
+	 src-required="false" dst-required="false">
+	<label ref-type="dst-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_marca_lote_catalogo_lote" type="relfk"
+	 src-table="bdcomer.marca_lote"
+	 dst-table="bdcomer.catalogo_lote" reference-fk="fk_marca_lote_catalogo_lote"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_volumen_convertido_envace_entrega_por_item" type="relfk"
+	 src-table="bdcomer.volumen_convertido_envace"
+	 dst-table="bdcomer.entrega_por_item" reference-fk="fk_volumen_convertido_envace_entrega_por_item"
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_monto_contratado_entrega_por_item" type="relfk"
+	 src-table="bdcomer.monto_contratado"
+	 dst-table="bdcomer.entrega_por_item" reference-fk="fk_monto_contratado_entrega_por_item"
+	 src-required="false" dst-required="false">
+	<label ref-type="dst-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_monto_contratado_nivel_educacion" type="relfk"
+	 src-table="bdcomer.monto_contratado"
+	 dst-table="bdcomer.nivel_educacion" reference-fk="fk_monto_contratado_nivel_educacion"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_monto_contratado_horario_alimentacion" type="relfk"
+	 src-table="bdcomer.monto_contratado"
+	 dst-table="bdcomer.horario_alimentacion" reference-fk="fk_monto_contratado_horario_alimentacion"
+	 src-required="false" dst-required="false">
+	<label ref-type="dst-label">
+		<position x="0.0925" y="-0.275"/>
+	</label>
+</relationship>
+
+<relationship name="rel_piking_catalogo_lote" type="relfk"
+	 src-table="bdcomer.piking"
+	 dst-table="bdcomer.catalogo_lote" reference-fk="fk_piking_catalogo_lote"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_piking_requerimiento_volumen_001" type="relfk"
+	 src-table="bdcomer.piking"
+	 dst-table="bdcomer.requerimiento_volumen_001" reference-fk="pikign_requerimiento_volumen_001"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_piking_volumen_convertido_envace" type="relfk"
+	 src-table="bdcomer.piking"
+	 dst-table="bdcomer.volumen_convertido_envace" reference-fk="fk_piking_volumen_convertido_envace"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_guia_remision_002_volumen_convertido_envace" type="relfk"
+	 src-table="bdcomer.guia_remision_002"
+	 dst-table="bdcomer.volumen_convertido_envace" reference-fk="fk_guia_remision_002_volumen_convertido_envase"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_entrega_por_item_proveedorcliente" type="relfk"
+	 src-table="bdcomer.entrega_por_item"
+	 dst-table="bdcomer.proveedorcliente" reference-fk="fk_entrega_por_item_proveedor_cliente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_entrega_por_item_punto_partida" type="relfk"
+	 src-table="bdcomer.entrega_por_item"
+	 dst-table="bdcomer.punto_partida" reference-fk="fk_entrega_por_item_punto_partida"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_entrega_por_item_vehiculo" type="relfk"
+	 src-table="bdcomer.entrega_por_item"
+	 dst-table="bdcomer.vehiculo" reference-fk="fk_entrega_por_item_vehiculo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_entrega_por_item_chofer" type="relfk"
+	 src-table="bdcomer.entrega_por_item"
+	 dst-table="bdcomer.chofer" reference-fk="fk_entrega_por_item_chofer"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_entrega_por_item_transportista" type="relfk"
+	 src-table="bdcomer.entrega_por_item"
+	 dst-table="bdcomer.transportista" reference-fk="fk_entrega_por_item_transportista"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ven001_tipodocumento" type="relfk"
+	 src-table="bdcomer.ven001"
+	 dst-table="bdcomer.tipodocumento" reference-fk="fk_ven001_tipodocumento"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ven001_modalidad_venta" type="relfk"
+	 src-table="bdcomer.ven001"
+	 dst-table="bdcomer.modalidad_venta" reference-fk="fk_ven001_modalidad_venta"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ven001_moneda" type="relfk"
+	 src-table="bdcomer.ven001"
+	 dst-table="bdcomer.moneda" reference-fk="fk_ven001_moneda"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ven001_proveedorclientedireccion" type="relfk"
+	 src-table="bdcomer.ven001"
+	 dst-table="bdcomer.proveedorclientedireccion" reference-fk="ven_001_proveedorclientedireccion"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_catalogo_multiplicar_nivel_educacion_nivel_educacion" type="relfk"
+	 src-table="bdcomer.catalogo_multiplicar_nivel_educacion"
+	 dst-table="bdcomer.nivel_educacion" reference-fk="fk_catalogo_multiplicar_nivel_educacion_nivel_edu"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_catalogo_multiplicar_nivel_educacion_producto_presentacion" type="relfk"
+	 src-table="bdcomer.catalogo_multiplicar_nivel_educacion"
+	 dst-table="bdcomer.producto_presentacion" reference-fk="fk_catalogo_multiplicar_producto_present"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_catalogo_multiplicar_nivel_educacion_catalogo_producto_qali" type="relfk"
+	 src-table="bdcomer.catalogo_multiplicar_nivel_educacion"
+	 dst-table="bdcomer.catalogo_producto_qaliwarma" reference-fk="fk_catalogo_multiplicar_catalogo_producto"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ruta_distribucion_vehiculo" type="relfk"
+	 src-table="bdcomer.ruta_distribucion"
+	 dst-table="bdcomer.vehiculo" reference-fk="fk_ruta_distribucion_vehiculo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ruta_distribucion_chofer" type="relfk"
+	 src-table="bdcomer.ruta_distribucion"
+	 dst-table="bdcomer.chofer" reference-fk="fk_ruta_distribucion_chofer"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>
