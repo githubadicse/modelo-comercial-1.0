@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.1-beta" last-position="640,0" last-zoom="0.7"
+<dbmodel pgmodeler-ver="0.9.1-beta" last-position="1758,0" last-zoom="0.7"
 	 default-owner="postgres">
 <database name="bdcomer" encoding="UTF8">
 	<role name="postgres"/>
@@ -20,7 +20,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="menu">
 	<schema name="bdcomer"/>
 	<role name="postgres"/>
-	<position x="1060" y="140"/>
+	<position x="1260" y="160"/>
 	<column name="idmenu" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
@@ -138,8 +138,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="clave" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
-	<column name="activo" not-null="true">
-		<type name="integer" length="1"/>
+	<column name="activo" not-null="true" default-value="true">
+		<type name="boolean" length="1"/>
 	</column>
 	<column name="login" not-null="true">
 		<type name="varchar" length="0"/>
