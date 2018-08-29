@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.1-beta" last-position="1758,0" last-zoom="0.7"
+<dbmodel pgmodeler-ver="0.9.1-beta" last-position="1255,469" last-zoom="0.7"
 	 default-owner="postgres">
 <database name="bdcomer" encoding="UTF8">
 	<role name="postgres"/>
@@ -149,9 +149,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</column>
 	<column name="idfilial" not-null="true">
 		<type name="integer" length="1"/>
-	</column>
-	<column name="status" not-null="true" default-value="true">
-		<type name="boolean" length="1"/>
 	</column>
 	<column name="dni">
 		<type name="varchar" length="0"/>
@@ -684,6 +681,9 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</column>
 	<column name="direccion" not-null="true">
 		<type name="varchar" length="0"/>
+	</column>
+	<column name="idfilial">
+		<type name="integer" length="0"/>
 	</column>
 	<constraint name="pk_idalmacen" type="pk-constr" table="bdcomer.almacen">
 		<columns names="idalmacen" ref-type="src-columns"/>
@@ -3127,6 +3127,12 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<columns names="id_tipo_documento" ref-type="dst-columns"/>
 </constraint>
 
+<constraint name="fk_almacen_filial" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.filial" table="bdcomer.almacen">
+	<columns names="idfilial" ref-type="src-columns"/>
+	<columns names="idfilial" ref-type="dst-columns"/>
+</constraint>
+
 <constraint name="fk_ing001" type="fk-constr" comparison-type="MATCH FULL"
 	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.ing001" table="bdcomer.ing002">
 	<columns names="iding001" ref-type="src-columns"/>
@@ -4474,6 +4480,11 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <relationship name="rel_numerador_tipodocumento" type="relfk"
 	 src-table="bdcomer.numerador"
 	 dst-table="bdcomer.tipodocumento"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_almacen_filial" type="relfk"
+	 src-table="bdcomer.almacen"
+	 dst-table="bdcomer.filial"
 	 src-required="false" dst-required="false"/>
 
 </dbmodel>
