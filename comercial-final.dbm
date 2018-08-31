@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.1-beta" last-position="1255,469" last-zoom="0.7"
+<dbmodel pgmodeler-ver="0.9.1-beta" last-position="1385,436" last-zoom="0.7"
 	 default-owner="postgres">
 <database name="bdcomer" encoding="UTF8">
 	<role name="postgres"/>
@@ -663,6 +663,21 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</column>
 	<column name="dni">
 		<type name="varchar" length="0"/>
+	</column>
+	<column name="activo" default-value="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="fecha_registro_systema_add">
+		<type name="timestamp" length="0"/>
+	</column>
+	<column name="idusuario_add">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fecha_registro_systema_update">
+		<type name="timestamp" length="0"/>
+	</column>
+	<column name="idusuario_update">
+		<type name="integer" length="0"/>
 	</column>
 	<constraint name="pk_idempleado" type="pk-constr" table="bdcomer.empleado">
 		<columns names="idempleado" ref-type="src-columns"/>
@@ -2964,6 +2979,24 @@ CAUTION: Do not modify this file unless you know what you are doing.
 			<column name="login"/>
 		</idxelement>
 </index>
+
+<table name="medio_pago">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="3762.86" y="870"/>
+	<column name="id_medio_pago" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="dsc_medio_pago">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="codigo_sunat">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="medio_pago_pk" type="pk-constr" table="bdcomer.medio_pago">
+		<columns names="id_medio_pago" ref-type="src-columns"/>
+	</constraint>
+</table>
 
 <constraint name="perfil_perfilesdetalle_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
 	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.perfil" table="bdcomer.perfilesdetalle">
