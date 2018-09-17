@@ -153,6 +153,9 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="activo" not-null="true" default-value="true">
 		<type name="boolean" length="1"/>
 	</column>
+	<column name="cnt_cambio_clave" default-value="0">
+		<type name="smallint" length="0"/>
+	</column>
 	<constraint name="keyusuario" type="pk-constr" factor="100" table="bdcomer.usuario">
 		<columns names="idusuario" ref-type="src-columns"/>
 	</constraint>
