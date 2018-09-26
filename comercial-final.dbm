@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.1-beta" last-position="1775,1047" last-zoom="1"
+<dbmodel pgmodeler-ver="0.9.1-beta" last-position="2651,1535" last-zoom="1"
 	 default-owner="postgres">
 <database name="bdcomer" encoding="UTF8">
 	<role name="postgres"/>
@@ -198,9 +198,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="idalmacen">
 		<type name="integer" length="1"/>
 	</column>
-	<column name="idusuario" not-null="true">
-		<type name="integer" length="1"/>
-	</column>
 	<column name="fechasys">
 		<type name="timestamp" length="1"/>
 	</column>
@@ -225,8 +222,17 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="saldo">
 		<type name="float" length="1"/>
 	</column>
-	<column name="fechahorasys">
+	<column name="fecha_registro_systema">
 		<type name="timestamp" length="1"/>
+	</column>
+	<column name="idusuario" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="fecha_registro_systema_modifica">
+		<type name="timestamp" length="0"/>
+	</column>
+	<column name="id_usuario_modifica">
+		<type name="integer" length="0"/>
 	</column>
 	<constraint name="com001_pk" type="pk-constr" factor="100" table="bdcomer.com001">
 		<columns names="idcom001" ref-type="src-columns"/>
@@ -602,9 +608,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="idempleado" not-null="true">
 		<type name="integer" length="1"/>
 	</column>
-	<column name="fechahorasys" not-null="true">
-		<type name="timestamp" length="1"/>
-	</column>
 	<column name="condicionrelacioncompra">
 		<type name="smallint" length="1"/>
 		<comment><![CDATA[0: sin relacion  1:relacion parcial 2: relacion completa con la factura]]></comment>
@@ -633,6 +636,18 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</column>
 	<column name="nrodocproveedor">
 		<type name="varchar" length="0"/>
+	</column>
+	<column name="fecha_registro_systema" not-null="true">
+		<type name="timestamp" length="1"/>
+	</column>
+	<column name="idusuario">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fecha_registro_systema_modifica">
+		<type name="timestamp" length="0"/>
+	</column>
+	<column name="idusuario_modifica">
+		<type name="integer" length="0"/>
 	</column>
 	<constraint name="pk_iding001" type="pk-constr" table="bdcomer.ing001">
 		<columns names="iding001" ref-type="src-columns"/>
