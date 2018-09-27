@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.1-beta" last-position="2651,1535" last-zoom="1"
+<dbmodel pgmodeler-ver="0.9.1-beta" last-position="2675,1556" last-zoom="1"
 	 default-owner="postgres">
 <database name="bdcomer" encoding="UTF8">
 	<role name="postgres"/>
@@ -156,6 +156,18 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="cnt_cambio_clave" default-value="0">
 		<type name="smallint" length="0"/>
 	</column>
+	<column name="idusuario_crea">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="idusuario_modifica">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fecha_registro_systema">
+		<type name="timestamp" length="0"/>
+	</column>
+	<column name="fecha_registro_systema_modifica">
+		<type name="timestamp" length="0"/>
+	</column>
 	<constraint name="keyusuario" type="pk-constr" factor="100" table="bdcomer.usuario">
 		<columns names="idusuario" ref-type="src-columns"/>
 	</constraint>
@@ -225,7 +237,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="fecha_registro_systema">
 		<type name="timestamp" length="1"/>
 	</column>
-	<column name="idusuario" not-null="true">
+	<column name="idusuario_crea" not-null="true">
 		<type name="integer" length="1"/>
 	</column>
 	<column name="fecha_registro_systema_modifica">
@@ -637,10 +649,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="nrodocproveedor">
 		<type name="varchar" length="0"/>
 	</column>
-	<column name="fecha_registro_systema" not-null="true">
+	<column name="fecha_registro_systema">
 		<type name="timestamp" length="1"/>
 	</column>
-	<column name="idusuario">
+	<column name="idusuario_crea">
 		<type name="integer" length="0"/>
 	</column>
 	<column name="fecha_registro_systema_modifica">
@@ -688,7 +700,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="fecha_registro_systema">
 		<type name="timestamp" length="0"/>
 	</column>
-	<column name="idusuario">
+	<column name="idusuario_crea">
 		<type name="integer" length="0"/>
 	</column>
 	<column name="fecha_registro_systema_modifica">
@@ -1428,24 +1440,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</column>
 	<constraint name="aperturapos_pk" type="pk-constr" table="bdcomer.aperturapuntoventa">
 		<columns names="idaperturapuntoventa" ref-type="src-columns"/>
-	</constraint>
-</table>
-
-<table name="usuarioempleado">
-	<schema name="bdcomer"/>
-	<role name="postgres"/>
-	<position x="3320" y="680"/>
-	<column name="idusuarioempleado" not-null="true">
-		<type name="varchar" length="0"/>
-	</column>
-	<column name="idusuario">
-		<type name="integer" length="0"/>
-	</column>
-	<column name="idempleado">
-		<type name="integer" length="0"/>
-	</column>
-	<constraint name="usuarioempleado_pk" type="pk-constr" table="bdcomer.usuarioempleado">
-		<columns names="idusuarioempleado" ref-type="src-columns"/>
 	</constraint>
 </table>
 
@@ -3427,18 +3421,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<columns names="idempleado" ref-type="dst-columns"/>
 </constraint>
 
-<constraint name="fk_usuarioempleado_usuario" type="fk-constr" comparison-type="MATCH FULL"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.usuario" table="bdcomer.usuarioempleado">
-	<columns names="idusuario" ref-type="src-columns"/>
-	<columns names="idusuario" ref-type="dst-columns"/>
-</constraint>
-
-<constraint name="fk_usuarioempleado_empleado" type="fk-constr" comparison-type="MATCH FULL"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.empleado" table="bdcomer.usuarioempleado">
-	<columns names="idempleado" ref-type="src-columns"/>
-	<columns names="idempleado" ref-type="dst-columns"/>
-</constraint>
-
 <constraint name="fk_requerimiento_volumen_001_ubigeo" type="fk-constr" comparison-type="MATCH FULL"
 	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.ubigeo" table="bdcomer.requerimiento_volumen_001">
 	<columns names="idubigeo" ref-type="src-columns"/>
@@ -4180,16 +4162,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <relationship name="rel_aperturapuntoventa_empleado" type="relfk"
 	 src-table="bdcomer.aperturapuntoventa"
-	 dst-table="bdcomer.empleado"
-	 src-required="false" dst-required="false"/>
-
-<relationship name="rel_usuarioempleado_usuario" type="relfk"
-	 src-table="bdcomer.usuarioempleado"
-	 dst-table="bdcomer.usuario"
-	 src-required="false" dst-required="false"/>
-
-<relationship name="rel_usuarioempleado_empleado" type="relfk"
-	 src-table="bdcomer.usuarioempleado"
 	 dst-table="bdcomer.empleado"
 	 src-required="false" dst-required="false"/>
 
