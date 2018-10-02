@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.1-beta" last-position="2675,1556" last-zoom="1"
+<dbmodel pgmodeler-ver="0.9.1-beta" last-position="2675,1397" last-zoom="1"
 	 default-owner="postgres">
 <database name="bdcomer" encoding="UTF8">
 	<role name="postgres"/>
@@ -194,50 +194,66 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="com001">
 	<schema name="bdcomer"/>
 	<role name="postgres"/>
-	<position x="3420" y="960"/>
+	<position x="3400" y="780"/>
 	<column name="idcom001" not-null="true">
-		<type name="integer" length="1"/>
+		<type name="bigint" length="1"/>
 	</column>
 	<column name="idproveedorcliente" not-null="true">
 		<type name="integer" length="1"/>
 	</column>
-	<column name="fecha" not-null="true">
-		<type name="timestamp" length="1"/>
+	<column name="fecha_emision" not-null="true">
+		<type name="date" length="1"/>
 	</column>
-	<column name="hora">
-		<type name="time" length="1"/>
+	<column name="id_tipo_documento">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="documento_serie" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="documento_numero" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="fecha_vencimiento" not-null="true">
+		<type name="date" length="0"/>
 	</column>
 	<column name="idalmacen">
 		<type name="integer" length="1"/>
 	</column>
-	<column name="fechasys">
-		<type name="timestamp" length="1"/>
+	<column name="importe_isc">
+		<type name="float" length="10" precision="3"/>
 	</column>
-	<column name="idmoneda">
+	<column name="importe_bruto">
+		<type name="float" length="1"/>
+	</column>
+	<column name="importe_igv_porcentaje">
+		<type name="float" length="1"/>
+	</column>
+	<column name="importe_igv">
+		<type name="float" length="1"/>
+	</column>
+	<column name="importe_compra">
+		<type name="float" length="1"/>
+	</column>
+	<column name="id_moneda">
 		<type name="integer" length="1"/>
 	</column>
-	<column name="igvporcentaje">
+	<column name="tipo_cambio">
 		<type name="float" length="1"/>
 	</column>
-	<column name="igvimporte">
+	<column name="importe_pagos">
 		<type name="float" length="1"/>
 	</column>
-	<column name="tipocambio">
-		<type name="float" length="1"/>
+	<column name="id_modalidad_compra_venta">
+		<type name="integer" length="0"/>
 	</column>
-	<column name="importe">
-		<type name="float" length="1"/>
-	</column>
-	<column name="totpago">
-		<type name="float" length="1"/>
-	</column>
-	<column name="saldo">
-		<type name="float" length="1"/>
+	<column name="flag_genera_from_nota_ingreso" default-value="false">
+		<type name="boolean" length="0"/>
+		<comment><![CDATA[si el registro de la compra es con referncia de una guia de ingreso al almacen (true) else false]]></comment>
 	</column>
 	<column name="fecha_registro_systema">
 		<type name="timestamp" length="1"/>
 	</column>
-	<column name="idusuario_crea" not-null="true">
+	<column name="id_usuario_crea" not-null="true">
 		<type name="integer" length="1"/>
 	</column>
 	<column name="fecha_registro_systema_modifica">
@@ -458,10 +474,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="bdcomer"/>
 	<position x="3540" y="1360"/>
 	<column name="idcom002" not-null="true">
-		<type name="integer" length="1"/>
+		<type name="varchar" length="0"/>
 	</column>
 	<column name="idcom001" not-null="true">
-		<type name="integer" length="1"/>
+		<type name="bigint" length="1"/>
 	</column>
 	<column name="idproducto" not-null="true">
 		<type name="integer" length="1"/>
@@ -469,11 +485,35 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="cantidad" not-null="true">
 		<type name="float" length="1"/>
 	</column>
-	<column name="preciounitario" not-null="true">
+	<column name="importe_isc">
+		<type name="float" length="0"/>
+	</column>
+	<column name="importe_bruto">
+		<type name="float" length="0"/>
+	</column>
+	<column name="importe_descuento">
+		<type name="float" length="0"/>
+	</column>
+	<column name="importe_valor_compra">
+		<type name="float" length="0"/>
+	</column>
+	<column name="importe_porcentaje_igv">
+		<type name="float" length="0"/>
+	</column>
+	<column name="importe_igv">
+		<type name="float" length="0"/>
+	</column>
+	<column name="importe_compra">
+		<type name="float" length="0"/>
+	</column>
+	<column name="importe_flete">
+		<type name="float" length="0"/>
+	</column>
+	<column name="importe_unitario" not-null="true">
 		<type name="float" length="1"/>
 	</column>
-	<column name="total" not-null="true">
-		<type name="float" length="1"/>
+	<column name="importe_total_costo_unitario">
+		<type name="float" length="0"/>
 	</column>
 	<constraint name="pk_com002" type="pk-constr" factor="10" table="bdcomer.com002">
 		<columns names="idcom002" ref-type="src-columns"/>
@@ -538,6 +578,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<position x="1940" y="1340"/>
 	<column name="id_moneda" not-null="true">
 		<type name="integer" length="1"/>
+		<comment><![CDATA[1 moneda nacional 2 dolar]]></comment>
 	</column>
 	<column name="dsc_moneda">
 		<type name="varchar" length="0"/>
@@ -1121,7 +1162,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="id_tipo_documento" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
-	<column name="id_modalidad_venta" not-null="true">
+	<column name="id_modalidad_compra_venta" not-null="true">
 		<type name="integer" length="1"/>
 	</column>
 	<column name="idaperturapuntoventa">
@@ -2790,18 +2831,18 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 </table>
 
-<table name="modalidad_venta">
+<table name="modalidad_compra_venta">
 	<schema name="bdcomer"/>
 	<role name="postgres"/>
-	<position x="140" y="1960"/>
-	<column name="id_modalidad_venta" not-null="true">
+	<position x="100" y="1880"/>
+	<column name="id_modalidad_compra_venta" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
-	<column name="dsc_modalidad_venta">
+	<column name="dsc_modalidad_compra_venta">
 		<type name="varchar" length="0"/>
 	</column>
-	<constraint name="modalidad_venta_pk" type="pk-constr" table="bdcomer.modalidad_venta">
-		<columns names="id_modalidad_venta" ref-type="src-columns"/>
+	<constraint name="modalidad_venta_pk" type="pk-constr" table="bdcomer.modalidad_compra_venta">
+		<columns names="id_modalidad_compra_venta" ref-type="src-columns"/>
 	</constraint>
 </table>
 
@@ -2998,7 +3039,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="medio_pago">
 	<schema name="bdcomer"/>
 	<role name="postgres"/>
-	<position x="3760" y="880"/>
+	<position x="3880" y="920"/>
 	<column name="id_medio_pago" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
@@ -3012,6 +3053,23 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<columns names="id_medio_pago" ref-type="src-columns"/>
 	</constraint>
 </table>
+
+<index name="idx_compra_proveedor_serie_numerodoc" table="bdcomer.com001"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="false">
+			<column name="idproveedorcliente"/>
+		</idxelement>
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_tipo_documento"/>
+		</idxelement>
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="documento_serie"/>
+		</idxelement>
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="documento_numero"/>
+		</idxelement>
+</index>
 
 <constraint name="perfil_perfilesdetalle_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
 	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.perfil" table="bdcomer.perfilesdetalle">
@@ -3045,7 +3103,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <constraint name="fk_moneda" type="fk-constr" comparison-type="MATCH FULL"
 	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.moneda" table="bdcomer.com001">
-	<columns names="idmoneda" ref-type="src-columns"/>
+	<columns names="id_moneda" ref-type="src-columns"/>
 	<columns names="id_moneda" ref-type="dst-columns"/>
 </constraint>
 
@@ -3053,6 +3111,18 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.almacen" table="bdcomer.com001">
 	<columns names="idalmacen" ref-type="src-columns"/>
 	<columns names="idalmacen" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_com001_modalidad_compra_venta" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.modalidad_compra_venta" table="bdcomer.com001">
+	<columns names="id_modalidad_compra_venta" ref-type="src-columns"/>
+	<columns names="id_modalidad_compra_venta" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_com001_tipo_documento" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.tipodocumento" table="bdcomer.com001">
+	<columns names="id_tipo_documento" ref-type="src-columns"/>
+	<columns names="id_tipo_documento" ref-type="dst-columns"/>
 </constraint>
 
 <constraint name="laboratorio_producto_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
@@ -3344,9 +3414,9 @@ CAUTION: Do not modify this file unless you know what you are doing.
 </constraint>
 
 <constraint name="fk_ven001_modalidad_venta" type="fk-constr" comparison-type="MATCH FULL"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.modalidad_venta" table="bdcomer.ven001">
-	<columns names="id_modalidad_venta" ref-type="src-columns"/>
-	<columns names="id_modalidad_venta" ref-type="dst-columns"/>
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.modalidad_compra_venta" table="bdcomer.ven001">
+	<columns names="id_modalidad_compra_venta" ref-type="src-columns"/>
+	<columns names="id_modalidad_compra_venta" ref-type="dst-columns"/>
 </constraint>
 
 <constraint name="fk_ven001_moneda" type="fk-constr" comparison-type="MATCH FULL"
@@ -4102,7 +4172,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <relationship name="rel_ven001_modalidad_venta" type="relfk"
 	 src-table="bdcomer.ven001"
-	 dst-table="bdcomer.modalidad_venta"
+	 dst-table="bdcomer.modalidad_compra_venta"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="rel_ven001_moneda" type="relfk"
@@ -4522,6 +4592,16 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <relationship name="rel_empleado_filial" type="relfk"
 	 src-table="bdcomer.empleado"
 	 dst-table="bdcomer.filial"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_com001_modalidad_compra_venta" type="relfk"
+	 src-table="bdcomer.com001"
+	 dst-table="bdcomer.modalidad_compra_venta"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_com001_tipodocumento" type="relfk"
+	 src-table="bdcomer.com001"
+	 dst-table="bdcomer.tipodocumento"
 	 src-required="false" dst-required="false"/>
 
 </dbmodel>
