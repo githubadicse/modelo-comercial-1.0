@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.1-beta" last-position="0,0" last-zoom="1"
+	 default-schema="public" default-owner="postgres">
+<database name="dbFacturaElectronica">
+</database>
+
+<schema name="public" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<schema name="facturaElectronica" rect-visible="true" fill-color="#e1e1e1">
+	<role name="postgres"/>
+</schema>
+
+<table name="factura_cab">
+	<schema name="&quot;facturaElectronica&quot;"/>
+	<role name="postgres"/>
+	<position x="480" y="223"/>
+	<column name="id_factura_cab" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="fecha_emision">
+		<type name="date" length="0"/>
+	</column>
+	<column name="fecha_vencimiento">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="factura_cab_pk" type="pk-constr" table="&quot;facturaElectronica&quot;.factura_cab">
+		<columns names="id_factura_cab" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+</dbmodel>

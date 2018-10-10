@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.1-beta" last-position="2675,1397" last-zoom="1"
+<dbmodel pgmodeler-ver="0.9.1-beta" last-position="3220,909" last-zoom="1"
 	 default-owner="postgres">
 <database name="bdcomer" encoding="UTF8">
 	<role name="postgres"/>
@@ -472,7 +472,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="com002">
 	<schema name="bdcomer"/>
-	<position x="3540" y="1360"/>
+	<position x="3840" y="1240"/>
 	<column name="idcom002" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
@@ -639,7 +639,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="ing001">
 	<schema name="bdcomer"/>
 	<role name="postgres"/>
-	<position x="3280" y="1640"/>
+	<position x="3200" y="1680"/>
 	<column name="iding001" not-null="true">
 		<type name="integer" length="1"/>
 	</column>
@@ -1041,7 +1041,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="motivoingreso">
 	<schema name="bdcomer"/>
 	<role name="postgres"/>
-	<position x="3760" y="1660"/>
+	<position x="3860" y="1880"/>
 	<column name="idmotivoingreso" not-null="true">
 		<type name="integer" length="1"/>
 	</column>
@@ -3071,6 +3071,24 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		</idxelement>
 </index>
 
+<table name="ing001_com002_relacion">
+	<schema name="bdcomer"/>
+	<role name="postgres"/>
+	<position x="3820" y="1660"/>
+	<column name="id_ing001_com002_relacion" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_ing001">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_com002">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="ing001_com002_relacion_pk" type="pk-constr" table="bdcomer.ing001_com002_relacion">
+		<columns names="id_ing001_com002_relacion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
 <constraint name="perfil_perfilesdetalle_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
 	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.perfil" table="bdcomer.perfilesdetalle">
 	<columns names="idperfil" ref-type="src-columns"/>
@@ -3177,6 +3195,12 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.com001" table="bdcomer.com002">
 	<columns names="idcom001" ref-type="src-columns"/>
 	<columns names="idcom001" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_com002_producto" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.producto" table="bdcomer.com002">
+	<columns names="idproducto" ref-type="src-columns"/>
+	<columns names="idproducto" ref-type="dst-columns"/>
 </constraint>
 
 <constraint name="fk_moneda" type="fk-constr" comparison-type="MATCH SIMPLE"
@@ -3905,6 +3929,18 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<columns names="id_catalogo_producto_qaliwarma" ref-type="dst-columns"/>
 </constraint>
 
+<constraint name="fk_ing001_com002_relacion_ing001" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.ing001" table="bdcomer.ing001_com002_relacion">
+	<columns names="id_ing001" ref-type="src-columns"/>
+	<columns names="iding001" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="ing001_com002_relacion_com002" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="bdcomer.com002" table="bdcomer.ing001_com002_relacion">
+	<columns names="id_com002" ref-type="src-columns"/>
+	<columns names="idcom002" ref-type="dst-columns"/>
+</constraint>
+
 <relationship name="rel_perfilesdetalle_perfil" type="relfk"
 	 src-table="bdcomer.perfilesdetalle"
 	 dst-table="bdcomer.perfil"
@@ -4602,6 +4638,21 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <relationship name="rel_com001_tipodocumento" type="relfk"
 	 src-table="bdcomer.com001"
 	 dst-table="bdcomer.tipodocumento"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ing001_com002_relacion_ing001" type="relfk"
+	 src-table="bdcomer.ing001_com002_relacion"
+	 dst-table="bdcomer.ing001"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ing001_com002_relacion_com002" type="relfk"
+	 src-table="bdcomer.ing001_com002_relacion"
+	 dst-table="bdcomer.com002"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_com002_producto" type="relfk"
+	 src-table="bdcomer.com002"
+	 dst-table="bdcomer.producto"
 	 src-required="false" dst-required="false"/>
 
 </dbmodel>
