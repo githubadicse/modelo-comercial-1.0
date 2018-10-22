@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.1-beta" last-position="0,229" last-zoom="0.8"
+<dbmodel pgmodeler-ver="0.9.1-beta" last-position="0,276" last-zoom="0.8"
 	 default-schema="public" default-owner="postgres">
 <database name="dbFacturaElectronica">
 </database>
@@ -11,12 +11,12 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <schema name="public" fill-color="#e1e1e1" sql-disabled="true">
 </schema>
 
-<schema name="facturaElectronica" rect-visible="true" fill-color="#e1e1e1">
+<schema name="facturaelectronica" rect-visible="true" fill-color="#e1e1e1">
 	<role name="postgres"/>
 </schema>
 
 <table name="documento_cab">
-	<schema name="&quot;facturaElectronica&quot;"/>
+	<schema name="facturaelectronica"/>
 	<role name="postgres"/>
 	<position x="320" y="560"/>
 	<column name="id_documento_cab" not-null="true">
@@ -81,13 +81,13 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="pocentaje_igv">
 		<type name="float" length="0"/>
 	</column>
-	<constraint name="factura_cab_pk" type="pk-constr" table="&quot;facturaElectronica&quot;.documento_cab">
+	<constraint name="factura_cab_pk" type="pk-constr" table="facturaelectronica.documento_cab">
 		<columns names="id_documento_cab" ref-type="src-columns"/>
 	</constraint>
 </table>
 
 <table name="documento_detalle">
-	<schema name="&quot;facturaElectronica&quot;"/>
+	<schema name="facturaelectronica"/>
 	<role name="postgres"/>
 	<position x="760" y="860"/>
 	<column name="id_factura_detalle" not-null="true">
@@ -137,13 +137,13 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="porcentaje_igv">
 		<type name="float" length="0"/>
 	</column>
-	<constraint name="factura_detalle_pk" type="pk-constr" table="&quot;facturaElectronica&quot;.documento_detalle">
+	<constraint name="factura_detalle_pk" type="pk-constr" table="facturaelectronica.documento_detalle">
 		<columns names="id_factura_detalle" ref-type="src-columns"/>
 	</constraint>
 </table>
 
 <table name="control_archivos">
-	<schema name="&quot;facturaElectronica&quot;"/>
+	<schema name="facturaelectronica"/>
 	<role name="postgres"/>
 	<position x="860" y="620"/>
 	<column name="id_control_archivo" not-null="true">
@@ -155,13 +155,13 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="situacion">
 		<type name="varchar" length="0"/>
 	</column>
-	<constraint name="control_archivos_pk" type="pk-constr" table="&quot;facturaElectronica&quot;.control_archivos">
+	<constraint name="control_archivos_pk" type="pk-constr" table="facturaelectronica.control_archivos">
 		<columns names="id_control_archivo" ref-type="src-columns"/>
 	</constraint>
 </table>
 
 <table name="resumen_boleta">
-	<schema name="&quot;facturaElectronica&quot;"/>
+	<schema name="facturaelectronica"/>
 	<role name="postgres"/>
 	<position x="160" y="1020"/>
 	<column name="id_resumen_boleta" not-null="true">
@@ -170,13 +170,13 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="fecha_generacion">
 		<type name="date" length="0"/>
 	</column>
-	<constraint name="resumen_boleta_pk" type="pk-constr" table="&quot;facturaElectronica&quot;.resumen_boleta">
+	<constraint name="resumen_boleta_pk" type="pk-constr" table="facturaelectronica.resumen_boleta">
 		<columns names="id_resumen_boleta" ref-type="src-columns"/>
 	</constraint>
 </table>
 
 <table name="perfil">
-	<schema name="&quot;facturaElectronica&quot;"/>
+	<schema name="facturaelectronica"/>
 	<role name="postgres"/>
 	<position x="1240" y="440"/>
 	<column name="idperfil" not-null="true">
@@ -188,13 +188,13 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="idfilial" not-null="true">
 		<type name="integer" length="1"/>
 	</column>
-	<constraint name="keyperfiles" type="pk-constr" factor="100" table="&quot;facturaElectronica&quot;.perfil">
+	<constraint name="keyperfiles" type="pk-constr" factor="100" table="facturaelectronica.perfil">
 		<columns names="idperfil" ref-type="src-columns"/>
 	</constraint>
 </table>
 
 <table name="perfilesdetalle">
-	<schema name="&quot;facturaElectronica&quot;"/>
+	<schema name="facturaelectronica"/>
 	<role name="postgres"/>
 	<position x="1220" y="260"/>
 	<column name="idsysperfilesdetalle" not-null="true">
@@ -206,13 +206,13 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="idperfil" not-null="true">
 		<type name="integer" length="1"/>
 	</column>
-	<constraint name="keyperfilesdetalle" type="pk-constr" factor="100" table="&quot;facturaElectronica&quot;.perfilesdetalle">
+	<constraint name="keyperfilesdetalle" type="pk-constr" factor="100" table="facturaelectronica.perfilesdetalle">
 		<columns names="idsysperfilesdetalle" ref-type="src-columns"/>
 	</constraint>
 </table>
 
 <table name="filial">
-	<schema name="&quot;facturaElectronica&quot;"/>
+	<schema name="facturaelectronica"/>
 	<role name="postgres"/>
 	<position x="20" y="240"/>
 	<column name="idfilial" not-null="true">
@@ -239,13 +239,13 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="dnirepresentantelegal" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
-	<constraint name="keyfilial" type="pk-constr" factor="100" table="&quot;facturaElectronica&quot;.filial">
+	<constraint name="keyfilial" type="pk-constr" factor="100" table="facturaelectronica.filial">
 		<columns names="idfilial" ref-type="src-columns"/>
 	</constraint>
 </table>
 
 <table name="usuario">
-	<schema name="&quot;facturaElectronica&quot;"/>
+	<schema name="facturaelectronica"/>
 	<role name="postgres"/>
 	<position x="400" y="20"/>
 	<column name="idusuario" not-null="true">
@@ -287,13 +287,13 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="fecha_registro_systema_modifica">
 		<type name="timestamp" length="0"/>
 	</column>
-	<constraint name="keyusuario" type="pk-constr" factor="100" table="&quot;facturaElectronica&quot;.usuario">
+	<constraint name="keyusuario" type="pk-constr" factor="100" table="facturaelectronica.usuario">
 		<columns names="idusuario" ref-type="src-columns"/>
 	</constraint>
 </table>
 
 <table name="perfilesdetallemantenimiento">
-	<schema name="&quot;facturaElectronica&quot;"/>
+	<schema name="facturaelectronica"/>
 	<role name="postgres"/>
 	<position x="1180" y="20"/>
 	<column name="perfilesdetallemantenimiento" not-null="true">
@@ -314,13 +314,13 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="imprimir" not-null="true">
 		<type name="smallint" length="1"/>
 	</column>
-	<constraint name="pk_perfilesdetallemantenimiento" type="pk-constr" table="&quot;facturaElectronica&quot;.perfilesdetallemantenimiento">
+	<constraint name="pk_perfilesdetallemantenimiento" type="pk-constr" table="facturaelectronica.perfilesdetallemantenimiento">
 		<columns names="perfilesdetallemantenimiento" ref-type="src-columns"/>
 	</constraint>
 </table>
 
 <table name="filepath">
-	<schema name="&quot;facturaElectronica&quot;"/>
+	<schema name="facturaelectronica"/>
 	<role name="postgres"/>
 	<position x="20" y="40"/>
 	<column name="idruta" not-null="true">
@@ -341,43 +341,43 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="archivos_qaliwarma">
 		<type name="varchar" length="0"/>
 	</column>
-	<constraint name="ruta_pk" type="pk-constr" table="&quot;facturaElectronica&quot;.filepath">
+	<constraint name="ruta_pk" type="pk-constr" table="facturaelectronica.filepath">
 		<columns names="idruta" ref-type="src-columns"/>
 	</constraint>
 </table>
 
 <constraint name="f_documento_resumen" type="fk-constr" comparison-type="MATCH FULL"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="&quot;facturaElectronica&quot;.resumen_boleta" table="&quot;facturaElectronica&quot;.documento_cab">
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="facturaelectronica.resumen_boleta" table="facturaelectronica.documento_cab">
 	<columns names="id_resumen_boleta" ref-type="src-columns"/>
 	<columns names="id_resumen_boleta" ref-type="dst-columns"/>
 </constraint>
 
 <constraint name="fk_documento_detalle_doc_cab" type="fk-constr" comparison-type="MATCH FULL"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="&quot;facturaElectronica&quot;.documento_cab" table="&quot;facturaElectronica&quot;.documento_detalle">
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="facturaelectronica.documento_cab" table="facturaelectronica.documento_detalle">
 	<columns names="id_documento_cab" ref-type="src-columns"/>
 	<columns names="id_documento_cab" ref-type="dst-columns"/>
 </constraint>
 
 <constraint name="perfil_perfilesdetalle_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="&quot;facturaElectronica&quot;.perfil" table="&quot;facturaElectronica&quot;.perfilesdetalle">
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="facturaelectronica.perfil" table="facturaelectronica.perfilesdetalle">
 	<columns names="idperfil" ref-type="src-columns"/>
 	<columns names="idperfil" ref-type="dst-columns"/>
 </constraint>
 
 <constraint name="perfil_usuario_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="&quot;facturaElectronica&quot;.perfil" table="&quot;facturaElectronica&quot;.usuario">
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="facturaelectronica.perfil" table="facturaelectronica.usuario">
 	<columns names="idperfil" ref-type="src-columns"/>
 	<columns names="idperfil" ref-type="dst-columns"/>
 </constraint>
 
 <constraint name="filial_usuario_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="&quot;facturaElectronica&quot;.filial" table="&quot;facturaElectronica&quot;.usuario">
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="facturaelectronica.filial" table="facturaelectronica.usuario">
 	<columns names="idfilial" ref-type="src-columns"/>
 	<columns names="idfilial" ref-type="dst-columns"/>
 </constraint>
 
 <constraint name="fk_perfildetalle_perfilesdetallemantenimiento" type="fk-constr" comparison-type="MATCH FULL"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="&quot;facturaElectronica&quot;.perfilesdetalle" table="&quot;facturaElectronica&quot;.perfilesdetallemantenimiento">
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="facturaelectronica.perfilesdetalle" table="facturaelectronica.perfilesdetallemantenimiento">
 	<columns names="idsysperfilesdetalle" ref-type="src-columns"/>
 	<columns names="idsysperfilesdetalle" ref-type="dst-columns"/>
 </constraint>
