@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.1-beta" last-position="0,0" last-zoom="1"
+<dbmodel pgmodeler-ver="0.9.1-beta" last-position="0,229" last-zoom="0.8"
 	 default-schema="public" default-owner="postgres">
 <database name="dbFacturaElectronica">
 </database>
@@ -15,12 +15,12 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<role name="postgres"/>
 </schema>
 
-<table name="factura_cab">
+<table name="documento_cab">
 	<schema name="&quot;facturaElectronica&quot;"/>
 	<role name="postgres"/>
-	<position x="480" y="223"/>
-	<column name="id_factura_cab" not-null="true">
-		<type name="bigint" length="0"/>
+	<position x="320" y="560"/>
+	<column name="id_documento_cab" not-null="true">
+		<type name="varchar" length="0"/>
 	</column>
 	<column name="fecha_emision">
 		<type name="date" length="0"/>
@@ -28,9 +28,388 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="fecha_vencimiento">
 		<type name="date" length="0"/>
 	</column>
-	<constraint name="factura_cab_pk" type="pk-constr" table="&quot;facturaElectronica&quot;.factura_cab">
-		<columns names="id_factura_cab" ref-type="src-columns"/>
+	<column name="sum_valor_venta_bruto">
+		<type name="float" length="0"/>
+		<comment><![CDATA[cantidad * precio_unitario_sin_igv     -> Base Imponible]]></comment>
+	</column>
+	<column name="sum_total_descuento">
+		<type name="float" length="0"/>
+	</column>
+	<column name="sum_valor_venta_grabada">
+		<type name="float" length="0"/>
+	</column>
+	<column name="sum_valor_venta_exonerada">
+		<type name="float" length="0"/>
+	</column>
+	<column name="sum_igv">
+		<type name="float" length="0"/>
+	</column>
+	<column name="sum_total_venta">
+		<type name="float" length="0"/>
+	</column>
+	<column name="codigo_documento_sunat">
+		<type name="varchar" length="0"/>
+		<comment><![CDATA[01 factura 03 boleta]]></comment>
+	</column>
+	<column name="dsc_documento_sunat">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="numero_documento_cliente">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="codigo_tipo_documento_cliente">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="dsc_tipo_documento_cliente">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="direccion_cliente">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nombre_cliente">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="comprobante_serie">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="comprobante_numero">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_resumen_boleta">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="pocentaje_igv">
+		<type name="float" length="0"/>
+	</column>
+	<constraint name="factura_cab_pk" type="pk-constr" table="&quot;facturaElectronica&quot;.documento_cab">
+		<columns names="id_documento_cab" ref-type="src-columns"/>
 	</constraint>
 </table>
+
+<table name="documento_detalle">
+	<schema name="&quot;facturaElectronica&quot;"/>
+	<role name="postgres"/>
+	<position x="760" y="860"/>
+	<column name="id_factura_detalle" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="id_documento_cab">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="cantidad">
+		<type name="float" length="0"/>
+	</column>
+	<column name="precio_unitario_con_igv">
+		<type name="float" length="0"/>
+	</column>
+	<column name="precio_unitario_sin_igv">
+		<type name="float" length="0"/>
+	</column>
+	<column name="total_valor_venta_bruto">
+		<type name="float" length="0"/>
+		<comment><![CDATA[cantidad * precio_unitario_sin_igv]]></comment>
+	</column>
+	<column name="total_descuento">
+		<type name="float" length="0"/>
+	</column>
+	<column name="total_valor_venta_grabada">
+		<type name="float" length="0"/>
+		<comment><![CDATA[total_base_imponible - total_descuento]]></comment>
+	</column>
+	<column name="total_valor_venta_exonerado">
+		<type name="float" length="0"/>
+	</column>
+	<column name="total_igv">
+		<type name="float" length="0"/>
+	</column>
+	<column name="total_venta">
+		<type name="float" length="0"/>
+	</column>
+	<column name="codigo_producto">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="dsc_producto_servicio">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="porcentaje_descuento">
+		<type name="float" length="0"/>
+	</column>
+	<column name="porcentaje_igv">
+		<type name="float" length="0"/>
+	</column>
+	<constraint name="factura_detalle_pk" type="pk-constr" table="&quot;facturaElectronica&quot;.documento_detalle">
+		<columns names="id_factura_detalle" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="control_archivos">
+	<schema name="&quot;facturaElectronica&quot;"/>
+	<role name="postgres"/>
+	<position x="860" y="620"/>
+	<column name="id_control_archivo" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nombre_archivo_xml">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="situacion">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="control_archivos_pk" type="pk-constr" table="&quot;facturaElectronica&quot;.control_archivos">
+		<columns names="id_control_archivo" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="resumen_boleta">
+	<schema name="&quot;facturaElectronica&quot;"/>
+	<role name="postgres"/>
+	<position x="160" y="1020"/>
+	<column name="id_resumen_boleta" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="fecha_generacion">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="resumen_boleta_pk" type="pk-constr" table="&quot;facturaElectronica&quot;.resumen_boleta">
+		<columns names="id_resumen_boleta" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="perfil">
+	<schema name="&quot;facturaElectronica&quot;"/>
+	<role name="postgres"/>
+	<position x="1240" y="440"/>
+	<column name="idperfil" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="dscperfil" not-null="true">
+		<type name="character varying" length="70"/>
+	</column>
+	<column name="idfilial" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<constraint name="keyperfiles" type="pk-constr" factor="100" table="&quot;facturaElectronica&quot;.perfil">
+		<columns names="idperfil" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="perfilesdetalle">
+	<schema name="&quot;facturaElectronica&quot;"/>
+	<role name="postgres"/>
+	<position x="1220" y="260"/>
+	<column name="idsysperfilesdetalle" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idmenu" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idperfil" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<constraint name="keyperfilesdetalle" type="pk-constr" factor="100" table="&quot;facturaElectronica&quot;.perfilesdetalle">
+		<columns names="idsysperfilesdetalle" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="filial">
+	<schema name="&quot;facturaElectronica&quot;"/>
+	<role name="postgres"/>
+	<position x="20" y="240"/>
+	<column name="idfilial" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="dscfilial" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="razonsocial" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="direccion" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="ruc">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="telefonos">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="representantelegal">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="dnirepresentantelegal" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="keyfilial" type="pk-constr" factor="100" table="&quot;facturaElectronica&quot;.filial">
+		<columns names="idfilial" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="usuario">
+	<schema name="&quot;facturaElectronica&quot;"/>
+	<role name="postgres"/>
+	<position x="400" y="20"/>
+	<column name="idusuario" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idperfil" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="clave" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="login" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nomusuario" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="idfilial" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="dni">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="activo" not-null="true" default-value="true">
+		<type name="boolean" length="1"/>
+	</column>
+	<column name="cnt_cambio_clave" default-value="0">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="idusuario_crea">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="idusuario_modifica">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fecha_registro_systema">
+		<type name="timestamp" length="0"/>
+	</column>
+	<column name="fecha_registro_systema_modifica">
+		<type name="timestamp" length="0"/>
+	</column>
+	<constraint name="keyusuario" type="pk-constr" factor="100" table="&quot;facturaElectronica&quot;.usuario">
+		<columns names="idusuario" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="perfilesdetallemantenimiento">
+	<schema name="&quot;facturaElectronica&quot;"/>
+	<role name="postgres"/>
+	<position x="1180" y="20"/>
+	<column name="perfilesdetallemantenimiento" not-null="true">
+		<type name="integer" length="1"/>
+	</column>
+	<column name="idsysperfilesdetalle" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nuevo" not-null="true">
+		<type name="smallint" length="1"/>
+	</column>
+	<column name="editar" not-null="true">
+		<type name="smallint" length="1"/>
+	</column>
+	<column name="eliminar" not-null="true">
+		<type name="smallint" length="1"/>
+	</column>
+	<column name="imprimir" not-null="true">
+		<type name="smallint" length="1"/>
+	</column>
+	<constraint name="pk_perfilesdetallemantenimiento" type="pk-constr" table="&quot;facturaElectronica&quot;.perfilesdetallemantenimiento">
+		<columns names="perfilesdetallemantenimiento" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="filepath">
+	<schema name="&quot;facturaElectronica&quot;"/>
+	<role name="postgres"/>
+	<position x="20" y="40"/>
+	<column name="idruta" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="rutaimages">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="rutapdf">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="rutaxls">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="rutadoc">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="archivos_qaliwarma">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="ruta_pk" type="pk-constr" table="&quot;facturaElectronica&quot;.filepath">
+		<columns names="idruta" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<constraint name="f_documento_resumen" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="&quot;facturaElectronica&quot;.resumen_boleta" table="&quot;facturaElectronica&quot;.documento_cab">
+	<columns names="id_resumen_boleta" ref-type="src-columns"/>
+	<columns names="id_resumen_boleta" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_documento_detalle_doc_cab" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="&quot;facturaElectronica&quot;.documento_cab" table="&quot;facturaElectronica&quot;.documento_detalle">
+	<columns names="id_documento_cab" ref-type="src-columns"/>
+	<columns names="id_documento_cab" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="perfil_perfilesdetalle_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="&quot;facturaElectronica&quot;.perfil" table="&quot;facturaElectronica&quot;.perfilesdetalle">
+	<columns names="idperfil" ref-type="src-columns"/>
+	<columns names="idperfil" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="perfil_usuario_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="&quot;facturaElectronica&quot;.perfil" table="&quot;facturaElectronica&quot;.usuario">
+	<columns names="idperfil" ref-type="src-columns"/>
+	<columns names="idperfil" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="filial_usuario_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="&quot;facturaElectronica&quot;.filial" table="&quot;facturaElectronica&quot;.usuario">
+	<columns names="idfilial" ref-type="src-columns"/>
+	<columns names="idfilial" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_perfildetalle_perfilesdetallemantenimiento" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="&quot;facturaElectronica&quot;.perfilesdetalle" table="&quot;facturaElectronica&quot;.perfilesdetallemantenimiento">
+	<columns names="idsysperfilesdetalle" ref-type="src-columns"/>
+	<columns names="idsysperfilesdetalle" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_documento_detalle_documento_cab" type="relfk"
+	 src-table="&quot;facturaElectronica&quot;.documento_detalle"
+	 dst-table="&quot;facturaElectronica&quot;.documento_cab"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_documento_cab_resumen_boleta" type="relfk"
+	 src-table="&quot;facturaElectronica&quot;.documento_cab"
+	 dst-table="&quot;facturaElectronica&quot;.resumen_boleta"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_perfilesdetalle_perfil" type="relfk"
+	 src-table="&quot;facturaElectronica&quot;.perfilesdetalle"
+	 dst-table="&quot;facturaElectronica&quot;.perfil"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_usuario_perfil" type="relfk"
+	 src-table="&quot;facturaElectronica&quot;.usuario"
+	 dst-table="&quot;facturaElectronica&quot;.perfil"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_usuario_filial" type="relfk"
+	 src-table="&quot;facturaElectronica&quot;.usuario"
+	 dst-table="&quot;facturaElectronica&quot;.filial"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_perfilesdetallemantenimiento_perfilesdetalle" type="relfk"
+	 src-table="&quot;facturaElectronica&quot;.perfilesdetallemantenimiento"
+	 dst-table="&quot;facturaElectronica&quot;.perfilesdetalle"
+	 src-required="false" dst-required="false"/>
 
 </dbmodel>
